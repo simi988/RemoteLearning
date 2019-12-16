@@ -1,0 +1,9 @@
+@startuml
+Customer -> Reseller: Buy Domain
+Reseller -->Registrar: Create Domain
+Registrar--->Registry:Create Domain
+
+Registrar<-Registry: Return Domain
+Reseller <--Registrar: Return Domain
+Customer <- Reseller: Sell Domain
+@enduml
