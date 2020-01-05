@@ -1,12 +1,20 @@
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class FileParser {
+    public static final int FIRST_NAME_POSITION = 0;
+    public static final int LAST_NAME_POSITION = 1;
+    public static final int YEAR_BIRTHDAY_POSITION = 2;
+    public static final int YEAR_DEAD_POSITION = 3;
+    public static final int MAX=4;
 
-    public List<Person> read(String fileName) {
-        List<Person> personsons = new ArrayList<>();
+    public  HashSet<Person> read(String fileName) {
+
+
+       HashSet<Person> personsons = new  HashSet<Person>();
         String cvsSplitBy = ",";
 
         try {
@@ -18,14 +26,14 @@ public class FileParser {
                 String[] data;
                 data = line.split(cvsSplitBy);
                 Person person = new Person();
-                person.setFirstName(data[0]);
-                person.setLastName(data[1]);
-                person.setYearBirthday(data[2]);
-                if (data.length < 4) {
-                    person.setYearDead(" lives");
-                } else {
-                    person.setYearDead(data[3]);
+                person.setfirstName(data[FIRST_NAME_POSITION]);
+                person.setlastName(data[LAST_NAME_POSITION]);
+                person.setyearBirthday(data[YEAR_BIRTHDAY_POSITION]);
 
+                if (data.length<MAX) {
+                    person.setyearDead(" lives");
+                } else {
+                    person.setyearDead(data[YEAR_DEAD_POSITION]);
                 }
                 if (!comparePerson(person, personsons)) {
                     personsons.add(person);
@@ -34,14 +42,15 @@ public class FileParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return personsons;
+        return  personsons;
     }
 
-    boolean comparePerson(Person person, List<Person> personsons) {
+    boolean comparePerson(Person person,  HashSet<Person> personsons) {
         for (Person p : personsons) {
             if (p.equals(person)) {
                 return true;
             }
+
         }
         return false;
     }

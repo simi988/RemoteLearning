@@ -1,0 +1,4 @@
+*.idea
+catalinsimion/w1p1/target/classes/META-INF/w1p1.kotlin_module
+catalinsimion/w2p2/target/classes/META-INF/w2p2.kotlin_module
+*.iml

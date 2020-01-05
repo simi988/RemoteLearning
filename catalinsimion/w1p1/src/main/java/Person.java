@@ -1,40 +1,40 @@
 
 public class Person {
-    private String FirstName = new String();
-    private String LastName = new String();
-    private String YearBirthday = new String();
-    private String YearDead = new String();
+    private String firstName = new String();
+    private String lastName = new String();
+    private String yearBirthday = new String();
+    private String yearDead = new String();
 
-    public String getFirstName() {
-        return FirstName;
+    public String getfirstName() {
+        return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
+    public void setfirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return LastName;
+    public String getlastName() {
+        return lastName;
     }
 
-    public void setLastName(String lastName) {
-        LastName = lastName;
+    public void setlastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getYearBirthday() {
-        return YearBirthday;
+    public String getyearBirthday() {
+        return yearBirthday;
     }
 
-    public void setYearBirthday(String yearBirthday) {
-        YearBirthday = yearBirthday;
+    public void setyearBirthday(String yearBirthday) {
+        this.yearBirthday = yearBirthday;
     }
 
-    public String getYearDead() {
-        return YearDead;
+    public String getyearDead() {
+        return yearDead;
     }
 
-    public void setYearDead(String yearDead) {
-        YearDead = yearDead;
+    public void setyearDead(String yearDead) {
+        this.yearDead = yearDead;
     }
 
     @Override
@@ -47,12 +47,15 @@ public class Person {
         }
         Person p = (Person) person;
 
-        if (p.getFirstName().equals(FirstName) &&
-                p.getLastName().equals(LastName) &&
-                p.getYearBirthday().equals(YearBirthday) &&
-                p.getYearDead().equals(YearDead)) {
+        if (p.getfirstName().equals(firstName) &&
+                p.getlastName().equals(lastName) &&
+                p.getyearBirthday().equals(yearBirthday) &&
+                p.getyearDead().equals(yearDead)) {
             return true;
         }
         return false;
+    }
+    public String toString(){
+return firstName+" "+lastName+" ("+yearBirthday+" "+yearDead+" )";
     }
 }

@@ -1,9 +1,24 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class Registrar {
 
-private Registry registry=new Registry();
-public  Domain createDomain(String owner,String host,String name){
+    public static final int FIRST_POSITION = 0;
+    private String registrarName;
+    private List<Registry> registrys = new ArrayList<>();
 
-    return registry.createDomain(owner,host,name);
-}
+    public Registrar(String registrarName) {
+        this.registrarName = registrarName;
+    }
+
+    public void buy(Domain domain) {
+        Registry registry = registrys.get(FIRST_POSITION);
+        registry.buy(domain);
+    }
+
+    public void addRegistry(Registry registry) {
+        registrys.add(registry);
+    }
+
+
 }
