@@ -13,10 +13,12 @@
         <module>w1p2</module>
         <module>w1p3</module>
         <module>w1p4</module>
-        <module>afs</module>
         <module>w2p1</module>
         <module>w2p2</module>
         <module>w2p3</module>
+        <module>w3p2</module>
+        <module>w3p1</module>
+        <module>w3p3</module>
     </modules>
 
     <properties>

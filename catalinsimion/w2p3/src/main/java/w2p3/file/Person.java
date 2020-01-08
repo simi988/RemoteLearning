@@ -1,18 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
+package w2p3.file;
 
 public class Person {
     public static String birthday;
     public static String name;
-    public static String adres;
+    public static String address;
 
-
-    public Person(String name, String birthday,String adres) {
+    public Person(String name, String birthday, String address) {
         this.name = name;
         this.birthday = birthday;
-        this.adres = adres;
+        this.address = address;
         System.out.println("constructor Persoana");
     }
-
-
 }
