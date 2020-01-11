@@ -15,14 +15,14 @@ public class Registry {
 
     public String createDomain(Domain domain) {
 
-            if (!domains.contains(domain)) {
-                domains.add(domain);
-                create = "created successfully";
-            } else
+        if (!domains.contains(domain)) {
+            domains.add(domain);
+            create = "created successfully";
+        } else
 
-                create = "Busy domain";
-            return create;
+            create = "Busy domain";
+        return create;
 
 
-        }
     }
+}

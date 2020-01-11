@@ -1,7 +1,9 @@
 package w1p1.file;
 
-import java.io.*;
-import java.util.HashSet;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -13,7 +15,7 @@ public class FileParser {
     public static final int MAX_POSITION = 4;
 
     public Set<Person> read(String fileName) {
-      Set<Person> personages = new LinkedHashSet<Person>();
+        Set<Person> personages = new LinkedHashSet<Person>();
         String cvsSplitBy = ",";
         try {
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();

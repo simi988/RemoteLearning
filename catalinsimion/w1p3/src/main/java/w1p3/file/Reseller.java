@@ -17,7 +17,7 @@ public class Reseller {
     public String createDomain(Domain domain) {
         Registrar registrar = registrars.get(FIRST_POSITION);
         registrar.createDomain(domain);
-        return  registrar.createDomain(domain);
+        return registrar.createDomain(domain);
     }
 
     public void addRegistrar(Registrar registrar) {

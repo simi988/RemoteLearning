@@ -5,12 +5,20 @@ public class Student extends Person {
     String specialty;
     String year;
 
+    {
+        System.out.println("this is a Student block");
+    }
+
+    static {
+        System.out.println("this is a Student static block");
+    }
+
     public Student(String faculty, String specialty, String year) {
         super(name, birthday, address);
         this.faculty = faculty;
         this.specialty = specialty;
         this.year = year;
-        System.out.println("constructor Student");
+        System.out.println("student builder");
     }
 
     @Override

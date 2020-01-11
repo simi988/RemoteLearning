@@ -21,7 +21,7 @@ public class Main {
 
     public static void addStudent() {
         System.out.println("addStudent");
-        student = new Student("Stiinte", "Informatica", "2");
+        student = new Student("Science", "Informatics", "2");
         studentList.add(student);
         System.out.println(student);
     }
@@ -29,7 +29,6 @@ public class Main {
     public static void main(String[] args) {
         addPerson();
         addStudent();
-        System.out.println("w2p3/main");
 
 
     }

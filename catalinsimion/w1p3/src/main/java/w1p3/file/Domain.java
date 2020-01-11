@@ -15,18 +15,16 @@ public class Domain {
     }
 
 
-
-
     @Override
     public boolean equals(Object o) {
         if (o == this) {
             return false;
         }
         Domain domain = (Domain) o;
-       if(owner.equals(owner) && host.equals(host) && name.equals(name)){
-           return true;
-       }
-       return false;
+        if (owner.equals(owner) && host.equals(host) && name.equals(name)) {
+            return true;
+        }
+        return false;
     }
 
     @Override

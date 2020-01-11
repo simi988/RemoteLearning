@@ -5,5 +5,11 @@ public class Amphibian {
        System.out.println("sound");
    }
 
+    public void move() {
+        System.out.println("move");
+    }
 
+    public void eat() {
+        System.out.println("eat");
+    }
 }
