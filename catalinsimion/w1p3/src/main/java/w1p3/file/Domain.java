@@ -14,6 +14,17 @@ public class Domain {
         this.name = name;
     }
 
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getHost() {
+        return host;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -21,7 +32,7 @@ public class Domain {
             return false;
         }
         Domain domain = (Domain) o;
-        if (owner.equals(owner) && host.equals(host) && name.equals(name)) {
+        if (domain.getOwner().equals(owner) && domain.getHost().equals(host) && domain.getName().equals(name)) {
             return true;
         }
         return false;

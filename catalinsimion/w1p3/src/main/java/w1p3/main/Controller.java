@@ -14,7 +14,11 @@ public class Controller {
         registrar.addRegistry(registry);
         System.out.println(customer.buy(domain));
         Domain domain1 = new Domain("Ion", "www.abc.ro", "abc");
-         System.out.println(customer.buy(domain1));
+        System.out.println(customer.buy(domain1));
+        Domain domain2 = new Domain("Ion", "www.ade.ro", "ade");
+        System.out.println(customer.buy(domain2));
+        Domain domain3 = new Domain("Fane", "www.zbc.ro", "abc");
+        System.out.println(customer.buy(domain3));
     }
 }
 
