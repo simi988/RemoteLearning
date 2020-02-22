@@ -4,7 +4,8 @@ public abstract class Person {
 
     public abstract String getBirthDate(String birthDate);
 
-    public abstract String selfDescribe();
+    public abstract String selfDescribe(String fullName, String birthDate);
+    public abstract String selfDescribe(String firstName,String surName, String birthDate);
 
 
     private static String birthDate;
@@ -31,10 +32,6 @@ public abstract class Person {
     }
 
 
-    @Override
-    public String toString() {
 
-        return firstName + " " + surName + "  " + birthDate + " ";
-    }
 
 }

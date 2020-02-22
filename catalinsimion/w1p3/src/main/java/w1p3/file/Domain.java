@@ -29,7 +29,7 @@ public class Domain {
     @Override
     public boolean equals(Object o) {
         if (o == this) {
-            return false;
+            return true;
         }
         Domain domain = (Domain) o;
         if (domain.getOwner().equals(owner) && domain.getHost().equals(host) && domain.getName().equals(name)) {

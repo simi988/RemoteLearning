@@ -19,6 +19,10 @@
         <module>w3p2</module>
         <module>w3p1</module>
         <module>w3p3</module>
+        <module>w4p1</module>
+        <module>w4p3</module>
+        <module>w4p2</module>
+        <module>w4p4</module>
     </modules>
 
     <properties>

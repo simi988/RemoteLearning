@@ -19,6 +19,7 @@ public class Controller {
         System.out.println(customer.buy(domain2));
         Domain domain3 = new Domain("Fane", "www.zbc.ro", "abc");
         System.out.println(customer.buy(domain3));
+
     }
 }
 

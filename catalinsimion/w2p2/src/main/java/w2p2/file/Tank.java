@@ -21,7 +21,7 @@ public class Tank {
         }
     }
 
-    public int pop() {
+    public Integer pop() {
 
         top--;
         if (top >= NUMBER_MIN) {
@@ -32,7 +32,7 @@ public class Tank {
         } else {
             System.out.println("Stack is Empty");
         }
-        return Integer.MAX_VALUE;
+        return null;
     }
 
     @Override

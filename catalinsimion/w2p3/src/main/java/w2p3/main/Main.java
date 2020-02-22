@@ -1,5 +1,6 @@
 package w2p3.main;
 
+import w2p3.file.Faculty;
 import w2p3.file.Person;
 import w2p3.file.Student;
 
@@ -11,7 +12,7 @@ public class Main {
     public static List<Student> studentList = new ArrayList<>();
     public static Person person;
     public static List<Person> personList = new ArrayList<>();
-
+public static Faculty faculty=new Faculty();
     public static void addPerson() {
         System.out.println("addPerson");
         person = new Person("Popescu Claudiu", "20.12.2000", "Str.Tufanele");
@@ -29,6 +30,7 @@ public class Main {
     public static void main(String[] args) {
         addPerson();
         addStudent();
+        faculty.whatFaculty(student);
 
 
     }

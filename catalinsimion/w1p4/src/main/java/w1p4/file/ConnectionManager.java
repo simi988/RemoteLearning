@@ -5,12 +5,12 @@ import java.util.List;
 
 public class ConnectionManager {
     private static ConnectionManager connectionManager = null;
-    public static final int POSITION = 0;
+
     private static List<Connection> connections;
-    private static int MAX_CONNECTION;
+
 
     private ConnectionManager(int maxConnection) {
-        MAX_CONNECTION = maxConnection;
+
         connections = new ArrayList<>();
 
         for (int i = 0; i < maxConnection; i++) {
@@ -32,10 +32,12 @@ public class ConnectionManager {
             return null;
         }
 
-        Connection connection = connections.get(POSITION);
-        connections.remove(POSITION);
+        Connection connection = connections.get(connections.size()-1);
         return connection;
+
     }
+
+
 
     public class Connection {
 

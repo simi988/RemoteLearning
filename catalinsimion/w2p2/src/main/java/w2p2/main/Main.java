@@ -17,7 +17,6 @@ public class Main {
 
         }
 
-        tank = null;
         System.gc();
     }
 }

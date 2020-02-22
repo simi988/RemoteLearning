@@ -1,5 +1,7 @@
 package w2p3.file;
 
+import java.sql.SQLOutput;
+
 public class Student extends Person {
     String faculty;
     String specialty;
@@ -25,5 +27,9 @@ public class Student extends Person {
     public String toString() {
         System.out.println("toString");
         return name + " " + birthday + " " + address + " " + faculty + " " + specialty + " " + year + " ";
+    }
+    public String getFaculty(){
+        System.out.println(faculty);
+        return faculty;
     }
 }
