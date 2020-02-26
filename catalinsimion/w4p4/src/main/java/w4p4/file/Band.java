@@ -1,7 +1,10 @@
 package w4p4.file;
 
-public class Band {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Band {
+List<Song>songs=new ArrayList<>();
 	public void member() {
 		System.out.println("they are members of the band and their role ");
 		LeadGuitarist leadGuitarist = new LeadGuitarist("Mike");

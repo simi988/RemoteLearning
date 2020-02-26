@@ -1,7 +1,7 @@
 package w4p1.file;
 
 
-public class TaxiDriver implements CurrentLocation,Address, Eat {
+public class TaxiDriver implements Person, Driver {
 
     private int taxiNumber;
     private  int time;

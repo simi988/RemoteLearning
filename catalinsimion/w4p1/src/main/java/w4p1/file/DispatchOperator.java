@@ -1,7 +1,7 @@
 package w4p1.file;
 import java.util.List;
 
-public class DispatchOperator implements Dispatcher, Eat {
+public class DispatchOperator implements Dispatcher,Person {
 
     private String name;
     private static List<TaxiDriver> drivers;

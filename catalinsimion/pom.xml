@@ -23,6 +23,9 @@
         <module>w4p3</module>
         <module>w4p2</module>
         <module>w4p4</module>
+        <module>w5p1</module>
+        <module>w5p3</module>
+        <module>w5p4</module>
     </modules>
 
     <properties>

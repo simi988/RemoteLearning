@@ -1,11 +1,15 @@
 package w4p4.file;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Playlist {
 	Song song = new Song("O mie de pahare "," White Mahala ");
-	Band band=new Band();
+
+	List<Song> songs=new ArrayList<>();
 
 	public void songPlay() {
-		band.member();
+		songs.add(song);
 		song.play();
 	}
 

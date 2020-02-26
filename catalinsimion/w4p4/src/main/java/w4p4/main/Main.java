@@ -2,12 +2,13 @@ package w4p4.main;
 
 
 import w4p4.file.CDPlayer;
-import w4p4.file.iPod;
+import w4p4.file.IPod;
+
 
 public class Main {
 	public static void main(String[] args) {
 		System.out.println("Play iPop");
-		iPod ipod = new iPod("iOS 7.1.2");
+		IPod ipod = new IPod("iOS 7.1.2");
 		ipod.playlistPlay();
 		System.out.println();
 		System.out.println();
