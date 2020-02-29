@@ -6,22 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="w3p1" />
-        <module name="w3p3" />
-        <module name="w1p1" />
         <module name="w5p3" />
         <module name="w5p4" />
-        <module name="w2p1" />
-        <module name="w3p2" />
+        <module name="w3p3" />
         <module name="w1p2" />
-        <module name="w2p2" />
+        <module name="w4p1" />
+        <module name="w4p3" />
+        <module name="w3p1" />
+        <module name="w3p2" />
+        <module name="w1p1" />
+        <module name="w4p4" />
         <module name="w1p4" />
         <module name="w1p3" />
         <module name="w2p3" />
-        <module name="w4p4" />
-        <module name="w4p3" />
+        <module name="w2p2" />
+        <module name="w2p1" />
         <module name="w4p2" />
-        <module name="w4p1" />
+        <module name="w5p2" />
         <module name="w5p1" />
       </profile>
     </annotationProcessing>
