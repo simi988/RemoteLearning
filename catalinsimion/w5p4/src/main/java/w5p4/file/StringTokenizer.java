@@ -4,15 +4,17 @@ import java.util.Scanner;
 
 public class StringTokenizer {
     public void printLatinWord() {
-        String word = "ay";
         System.out.print("Enter a string : ");
+        String encodingWord = "ay";
+
         Scanner scanner = new Scanner(System.in);
         String inputString = scanner.nextLine();
+
         String[] tokens = inputString.split(" ");
-        for (String t : tokens) {
-            char ch1 = t.charAt(0);
-            String ch2 = t.substring(1);
-            String message = ch2 + ch1 + word;
+        for (String token : tokens) {
+            char firstLetter = token.charAt(0);
+            String substring = token.substring(1);
+            String message = substring + firstLetter + encodingWord;
             System.out.print(message + " ");
         }
 

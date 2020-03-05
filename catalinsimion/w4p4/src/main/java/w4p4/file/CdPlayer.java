@@ -5,7 +5,4 @@ public class CDPlayer extends MusicPlayer {
 		super(OS);
 		System.out.println(OS);
 	}
-
-	
-
 }

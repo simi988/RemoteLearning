@@ -4,15 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicPlayer {
-	Playlist playlist = new Playlist();
+	List<Song>songList=new ArrayList<>();
 	List<Playlist>playlists=new ArrayList<>();
-	public void playlistPlay() {
-		playlists.add(playlist);
-		playlist.songPlay();
-	}
 	public MusicPlayer(String OS) {
 
 	}
+
+	public void playListPlay() {
+		for (Playlist playlist : playlists) {
+			System.out.println(playlist);
+		}
+	}
+	public void playSongList(){
+		for (Song song : songList) {
+			System.out.println(song);
+		}
+	}
+
 
 	
 

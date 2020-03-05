@@ -7,9 +7,8 @@ public class StringList implements List<String> {
     private ArrayList<Integer> list;
 
     public StringList() {
-        list = new ArrayList<Integer>();
+        list = new ArrayList<>();
     }
-
 
     @Override
     public void add(String element) throws CustomException {
@@ -37,7 +36,7 @@ public class StringList implements List<String> {
 
     @Override
     public boolean contains(String element) throws CustomException {
-        Integer number;
+        int number;
         if (element == null) {
             throw new CustomException("Null");
         }
@@ -54,7 +53,7 @@ public class StringList implements List<String> {
     public boolean containsAll(List<String> foreignList) throws CustomException {
         for (int i = 0; i < foreignList.size(); i++) {
             boolean b = contains(foreignList.get(i));
-            if (b == false) {
+            if (!b) {
                 return false;
             }
         }

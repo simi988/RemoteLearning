@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Playlist {
-	Song song = new Song("O mie de pahare "," White Mahala ");
 
 	List<Song> songs=new ArrayList<>();
 
 	public void songPlay() {
-		songs.add(song);
-		song.play();
+		for (Song song : songs) {
+			System.out.println(song);
+
+		}
+
 	}
 
 }

@@ -9,7 +9,7 @@ public class Main {
         History history = new History();
 
         history.historic();
-        System.out.println(history.toString());
+        history.story();
 
     }
 }

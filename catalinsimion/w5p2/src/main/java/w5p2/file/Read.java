@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Read implements Titlelizer {
-    private List<String> ignore = Arrays.asList("the", "a", "to", "in", "of", "is");
+    private List<String> ignoreWordsList = Arrays.asList("the", "a", "to", "in", "of", "is");
 
     @Override
-    public String titlelize(String toTitlelize) throws Exception {
+    public String titlelize(String toTitlelize) {
         if (toTitlelize == null) {
             throw new IllegalArgumentException("null");
         }
@@ -16,19 +16,18 @@ public class Read implements Titlelizer {
         }
         String[] tokens = toTitlelize.split(" ");
         String sentence = "";
-        for (String t : tokens) {
+        for (String token : tokens) {
 
-            if (!ignore.contains(t)) {
-                String ch = t.substring(0, 1).toUpperCase() + t.substring(1);
-                sentence = sentence + ch + " ";
-                System.out.print(sentence + " ");
+            if (!ignoreWordsList.contains(token)) {
+                String  firstLetter = token.substring(0, 1).toUpperCase() + token.substring(1);
+                sentence += firstLetter + " ";
+
             } else {
-                sentence = sentence + t + " ";
-                System.out.print(sentence + " ");
+                sentence += token + " ";
             }
-
         }
         sentence = sentence.substring(0, sentence.length() - 1);
+        System.out.println(sentence);
 
         return sentence;
     }
