@@ -29,6 +29,7 @@
         <module>w5p2</module>
         <module>w6p1</module>
         <module>w6p2</module>
+        <module>w6p3</module>
     </modules>
 
     <properties>
