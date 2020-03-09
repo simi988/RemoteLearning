@@ -8,7 +8,7 @@ public class MyClassLoader extends ClassLoader {
     public Object invokeClassMethod(String classBinName) {
 
         try {
-            File file = new File("D:\\IT\\IQRemoteLearning");
+            File file = new File("MyClass.class");
             URL url = file.toURI().toURL();
             URL[] urls = new URL[]{url};
             ClassLoader cl = new URLClassLoader(urls);
