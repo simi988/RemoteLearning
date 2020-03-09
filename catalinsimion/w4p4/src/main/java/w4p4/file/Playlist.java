@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Playlist {
 
-	List<Song> songs=new ArrayList<>();
+    List<Song> songs = new ArrayList<>();
 
-	public void songPlay() {
-		for (Song song : songs) {
-			System.out.println(song);
+    public void songPlay() {
+        for (Song song : songs) {
+            System.out.println(song);
 
-		}
+        }
 
-	}
+    }
 
 }

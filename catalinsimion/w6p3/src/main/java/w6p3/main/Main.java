@@ -7,9 +7,9 @@ public class Main {
     public static void main(String[] args) {
 
         MyClass myClass = new MyClass();
-        System.out.println("Loded class: "+myClass.getName());
+        System.out.println("Loded class: " + myClass.getName());
         MyClassLoader myClassLoader = new MyClassLoader();
         MyClass myClass2 = (MyClass) myClassLoader.invokeClassMethod("w6p3.file.MyClass");
-        System.out.println("Reloded class: "+myClass2.getName());
+        System.out.println("Reloded class: " + myClass2.getName());
     }
 }

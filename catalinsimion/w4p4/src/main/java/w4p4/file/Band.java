@@ -1,17 +1,18 @@
 package w4p4.file;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Band {
-List<Song>songs=new ArrayList<>();
-	public void member() {
-		System.out.println("they are members of the band and their role ");
-		LeadGuitarist leadGuitarist = new LeadGuitarist("Mike");
-		BassGuitarist bassGuitarist = new BassGuitarist("Harvey");
-		RhythmGuitarist rhythmGuitarist = new RhythmGuitarist("Louis");
-		Drummer drummer = new Drummer("Cameron");
+    Playlist playlist = new Playlist();
 
-	}
+    LeadGuitarist leadGuitarist;
+    BassGuitarist bassGuitarist;
+    RhythmGuitarist rhythmGuitarist;
+    Drummer drummer;
 
+    public void member() {
+        System.out.println("they are members of the band and their role ");
+        leadGuitarist = new LeadGuitarist("Mike");
+        bassGuitarist = new BassGuitarist("Harvey");
+        rhythmGuitarist = new RhythmGuitarist("Louis");
+        drummer = new Drummer("Cameron");
+    }
 }
