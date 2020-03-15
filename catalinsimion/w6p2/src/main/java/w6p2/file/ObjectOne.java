@@ -10,6 +10,6 @@ public class ObjectOne implements ObjectInterface {
     @Override
     public int returnSum(int a, int b) {
         System.out.println(a + " " + b + " object1");
-        return a+b;
+        return a + b;
     }
 }

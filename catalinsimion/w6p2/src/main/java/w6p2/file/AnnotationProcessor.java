@@ -1,17 +1,22 @@
 package w6p2.file;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public abstract class AnnotationProcessor {
+public class AnnotationProcessor implements InvocationHandler {
     private Object object;
 
     public AnnotationProcessor(Object object) {
         this.object = object;
     }
 
-    public Object getObject() {
-        return object;
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        if (isAnnotationOnClass() || isAnnotationOnMethod(method)) {
+            printObjectInfo(proxy, method.getName(), args.toString());
+        }
+        return method.invoke(object, args);
     }
 
     protected boolean isAnnotationOnClass() {
@@ -24,22 +29,19 @@ public abstract class AnnotationProcessor {
         return false;
     }
 
-    protected boolean isAnnotationOnMethod(String methodName) {
-        Class c = object.getClass();
-        Method[] methods = c.getMethods();
-        for (Method m : methods) {
-            if (m.getName().equals(methodName)) {
-                Annotation annotation = m.getAnnotation(Logged.class);
-                if (annotation != null) {
-                    return true;
-                }
-                return false;
-            }
+    protected boolean isAnnotationOnMethod(Method method) {
+
+
+        Annotation annotation = method.getAnnotation(Logged.class);
+        if (annotation != null) {
+            return true;
         }
+
+
         return false;
     }
 
-    protected void printObjectInfo(String methodName, String parameters) {
+    protected void printObjectInfo(Object object, String methodName, String parameters) {
         System.out.println("Class: " + object.getClass() + " method name: " + methodName + " parameters: " + parameters);
     }
 }

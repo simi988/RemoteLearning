@@ -1,15 +1,20 @@
 package w6p3.main;
 
+import w6p3.file.Factory;
 import w6p3.file.MyClass;
-import w6p3.file.MyClassLoader;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
-        MyClass myClass = new MyClass();
-        System.out.println("Loded class: " + myClass.getName());
-        MyClassLoader myClassLoader = new MyClassLoader();
-        MyClass myClass2 = (MyClass) myClassLoader.invokeClassMethod("w6p3.file.MyClass");
-        System.out.println("Reloded class: " + myClass2.getName());
+        Factory factory = new Factory();
+        MyClass myClassObject = factory.getMyClassObject();
+        System.out.println("Loded class: " + myClassObject.getName());
+        Class classDinamic = factory.getClassDinamic();
+        System.out.println("Reloded class: " + classDinamic.getName());
+
+        Object newInstance = classDinamic.getDeclaredConstructor().newInstance();
+        myClassObject = (MyClass) newInstance;
     }
 }

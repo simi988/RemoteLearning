@@ -17,13 +17,9 @@ public enum CustomDay {
     }
 
     public static CustomDay valueOf(int value) {
-
-        int day = value % 7;
-
-        switch (day) {
-
+//value=value%7;
+        switch (value) {
             case (1):
-
                 return MONDAY;
             case (2):
                 return TUESDAY;
@@ -35,7 +31,7 @@ public enum CustomDay {
                 return FRIDAY;
             case (6):
                 return SATURDAY;
-            case (7):
+            case (0):
                 return SUNDAY;
 
             default:

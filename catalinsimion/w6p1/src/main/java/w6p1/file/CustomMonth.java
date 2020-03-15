@@ -14,16 +14,16 @@ public enum CustomMonth {
     NOVEMBER(11, "November"),
     DECEMBER(12, "December");
 
-    private int i;
+    private int numberOfMonth;
     private String month;
 
-    CustomMonth(int i, String month) {
-        this.i = i;
+    CustomMonth(int numberOfMonth, String month) {
+        this.numberOfMonth = numberOfMonth;
         this.month = month;
     }
 
-    public static CustomMonth valueOf(int i) {
-        switch (i) {
+    public static CustomMonth valueOf(int numberOfMonth) {
+        switch (numberOfMonth) {
             case (1):
                 return CustomMonth.JANUARY;
             case (2):
