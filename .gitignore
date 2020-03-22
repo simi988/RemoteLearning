@@ -30,3 +30,4 @@ target/
 
 factoryConfiguration.json
 *.idea
+Resources/** !Resources/**/*.foo
