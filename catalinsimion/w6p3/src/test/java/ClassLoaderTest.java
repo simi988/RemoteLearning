@@ -22,5 +22,5 @@ public class ClassLoaderTest {
         String loaded = createObject(Factory.ObjectType.SUBCLASS).getName();
         assertEquals(loaded, "MySubClass");
     }
-    //hh
+    
 }
