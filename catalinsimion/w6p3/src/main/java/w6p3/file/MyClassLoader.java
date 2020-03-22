@@ -1,27 +1,22 @@
 package w6p3.file;
 
+
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
 public class MyClassLoader extends ClassLoader {
 
-
-    @Override
-    public Class findClass(String name) throws ClassNotFoundException {
-        byte[] b = loadClassFromFile(name);
-        return defineClass(name, b, 0, b.length);
+    public MyClassLoader(ClassLoader parent) {
+        super(parent);
     }
 
-    private byte[] loadClassFromFile(String fileName) {
-
-
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(
-                fileName.replace('.', File.separatorChar) + ".class");
-        byte[] buffer;
+    public Class loadClassFromFile(String className) {
+        String classPath = className + ".class";
+        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(classPath);
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-        int nextValue = 0;
+        byte[] buffer;
+        int nextValue;
         try {
             while ((nextValue = inputStream.read()) != -1) {
                 byteStream.write(nextValue);
@@ -30,7 +25,7 @@ public class MyClassLoader extends ClassLoader {
             e.printStackTrace();
         }
         buffer = byteStream.toByteArray();
-        return buffer;
+        return defineClass("w6p3.file." + className, buffer, 0, buffer.length);
     }
 
 }

@@ -9,7 +9,6 @@ public class Factory {
         return (ObjectInterface) Proxy.newProxyInstance(ObjectInterface.class.getClassLoader(), new Class[]{ObjectInterface.class},
                 new AnnotationProcessor(objectOne));
     }
-
     public static ObjectInterface getObjectTwo() {
         ObjectTwo objectTwo = new ObjectTwo();
         return (ObjectInterface) Proxy.newProxyInstance(ObjectTwo.class.getClassLoader(), new Class[]{ObjectInterface.class},

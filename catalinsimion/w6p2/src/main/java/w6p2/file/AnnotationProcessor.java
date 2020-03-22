@@ -30,14 +30,10 @@ public class AnnotationProcessor implements InvocationHandler {
     }
 
     protected boolean isAnnotationOnMethod(Method method) {
-
-
         Annotation annotation = method.getAnnotation(Logged.class);
         if (annotation != null) {
             return true;
         }
-
-
         return false;
     }
 
