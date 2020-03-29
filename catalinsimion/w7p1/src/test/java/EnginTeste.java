@@ -14,7 +14,7 @@ import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class EngineTeste {
+public class EnginTeste {
 
     private List<Employee> employee;
     private List<Engine> engines;
@@ -83,5 +83,11 @@ public class EngineTeste {
     @Test
     public void TestGetComponentsPerEngine() {
         assertEquals(3, EngineFactory.getComponentsPerEngine());
+    }
+
+    @Test
+    public void testEmployee() {
+        EmployeeMatcher employeeMatcher = new EmployeeMatcher(employeeOne);
+        employeeMatcher.matchesSafely("Michael");
     }
 }

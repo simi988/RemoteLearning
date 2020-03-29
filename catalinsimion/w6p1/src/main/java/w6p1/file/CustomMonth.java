@@ -14,12 +14,7 @@ public enum CustomMonth {
     NOVEMBER(11, "November"),
     DECEMBER(12, "December");
 
-    private int numberOfMonth;
-    private String month;
-
     CustomMonth(int numberOfMonth, String month) {
-        this.numberOfMonth = numberOfMonth;
-        this.month = month;
     }
 
     public static CustomMonth valueOf(int numberOfMonth) {

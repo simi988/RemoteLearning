@@ -9,7 +9,5 @@ public class Main {
     public static void main(String[] args) {
         Date date = new Date(2020, 2, 15);
         System.out.println(CustomDay.valueOf(date.getDay()) + " " + CustomMonth.valueOf(date.getMonth() + 1) + " " + date.getYear());
-
-
     }
 }

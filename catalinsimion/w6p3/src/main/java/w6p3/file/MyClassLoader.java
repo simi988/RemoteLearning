@@ -25,7 +25,8 @@ public class MyClassLoader extends ClassLoader {
             e.printStackTrace();
         }
         buffer = byteStream.toByteArray();
-        return defineClass("w6p3.file." + className, buffer, 0, buffer.length);
+        String filePath="w6p3.file.";
+        return defineClass(filePath + className, buffer, 0, buffer.length);
     }
 
 }

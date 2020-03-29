@@ -8,16 +8,11 @@ public enum CustomDay {
     FRIDAY(5, "Friday"),
     SATURDAY(6, "Saturday"),
     SUNDAY(7, "Sunday");
-    private String day;
-    private int value;
 
     CustomDay(int value, String day) {
-        this.value = value;
-        this.day = day;
     }
 
     public static CustomDay valueOf(int value) {
-//value=value%7;
         switch (value) {
             case (1):
                 return MONDAY;

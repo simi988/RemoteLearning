@@ -1,6 +1,6 @@
 package w8p1.file;
 
-public class Country {
+public class Country implements  Comparable{
     private String name;
     private String capital;
 
@@ -20,5 +20,10 @@ public class Country {
     @Override
     public String toString() {
         return "Country: " + "name= " + name + ", capital='" + capital;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return name.compareTo(((Country)o).getName());
     }
 }

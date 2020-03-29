@@ -1,6 +1,7 @@
 import com.iquestgroup.remotelearning.domain.Employee;
 import com.iquestgroup.remotelearning.domain.Engine;
 import com.iquestgroup.remotelearning.domain.EngineArchitecture;
+import com.iquestgroup.remotelearning.exception.UnauthorizedEmployeeException;
 import com.iquestgroup.remotelearning.exception.UnqualifiedEmployeeException;
 import com.iquestgroup.remotelearning.factory.EngineFactory;
 import com.iquestgroup.remotelearning.service.EmployeeService;
@@ -31,21 +32,17 @@ public class EmployeeTest {
         employeeThird = new Employee("Michel");
         employeeFour = new Employee("Bond");
     }
+
     EmployeeService employeeServiceMock = niceMock(EmployeeService.class);
     EngineFactory engineFactoryMock = niceMock(EngineFactory.class);
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testForEngineFactoryObjectShouldThrowException() {
         expect(engineFactoryMock.manufactureEngines(3, null)).andStubThrow(new NullPointerException());
         replay(engineFactoryMock);
-        Exception expectedException = null;
-        try {
-            engineFactoryMock.manufactureEngines(3, null);
-        } catch (Exception ex) {
-            expectedException = ex;
-        }
+        engineFactoryMock.manufactureEngines(3, null);
         verify(engineFactoryMock);
-        assertEquals(NullPointerException.class, expectedException.getClass());
+
     }
 
     @Test
@@ -57,25 +54,26 @@ public class EmployeeTest {
         List<Engine> engines = engineFactory.manufactureEngines(numberOfEngines, employeeTwo);
         Engine engine = new Engine(EngineArchitecture.L4, 2.0, 210);
         verify(employeeServiceMock);
-        assertEquals(engines.size(), numberOfEngines);
-        assertEquals(engines.get(0).getEngineArchitecture(), engine.getEngineArchitecture());
-        assertEquals(engines.get(0).getDisplacement(), engine.getDisplacement(), 0);
-        assertEquals(engines.get(0).getHorsePower(), engine.getHorsePower());
+        EmployeeMatcher employeeMatcher = new EmployeeMatcher(engines);
+        employeeMatcher.matchesSafely(engines, numberOfEngines, engine);
     }
 
-    @Test
+    @Test(expected = UnqualifiedEmployeeException.class)
     public void testUnqualifiedEmployeeException() {
         expect(employeeServiceMock.isAssemblyLineWorker(employeeThird)).andReturn(false);
         replay(employeeServiceMock);
         EngineFactory engineFactory = new EngineFactory(employeeServiceMock);
         Exception exception = null;
-        try {
-            engineFactory.manufactureEngines(2, employeeThird);
-
-        } catch (Exception ex) {
-            exception = ex;
-        }
+        engineFactory.manufactureEngines(2, employeeThird);
         verify(employeeServiceMock);
         assertEquals(UnqualifiedEmployeeException.class, exception.getClass());
+    }
+
+    @Test(expected = UnauthorizedEmployeeException.class)
+    public void testUnauthorizedEmployeeException() {
+        expect(employeeServiceMock.isAdministrator(employeeOne)).andStubThrow(new UnauthorizedEmployeeException("not authorized"));
+        replay(employeeServiceMock);
+        employeeServiceMock.isAdministrator(employeeOne);
+        verify(employeeServiceMock);
     }
 }

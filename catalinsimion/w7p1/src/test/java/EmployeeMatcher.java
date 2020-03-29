@@ -1,20 +1,14 @@
 import com.iquestgroup.remotelearning.domain.Employee;
-import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
 
-public class EmployeeMatcher extends TypeSafeMatcher<Employee> {
+import static org.junit.Assert.assertEquals;
+
+public class EmployeeMatcher  {
     Employee giveEmployee;
     public EmployeeMatcher(Employee giveEmployee){
         this.giveEmployee=giveEmployee;
     }
 
-    protected boolean matchesSafely(Employee expectedEmployee) {
-        if (giveEmployee.getName().equalsIgnoreCase(expectedEmployee.getName())){
-            return true;
-        }
-        return false;
-    }
-
-    public void describeTo(Description description) {
+    protected void matchesSafely(String name) {
+        assertEquals(giveEmployee.getName(),name);
     }
 }
