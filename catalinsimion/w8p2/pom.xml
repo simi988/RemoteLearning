@@ -11,9 +11,8 @@
 
     <artifactId>w8p2</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>untitled</module>
-    </modules>
+
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
