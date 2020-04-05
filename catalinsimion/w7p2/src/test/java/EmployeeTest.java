@@ -14,10 +14,8 @@ import static org.easymock.EasyMock.*;
 import static org.junit.Assert.assertEquals;
 
 public class EmployeeTest {
-
+    EmployeeService employeeServiceMock = niceMock(EmployeeService.class);
     private EngineFactory engineFactory;
-    private EmployeeService employeeService;
-
     private Employee employeeOne;
     private Employee employeeTwo;
     private Employee employeeThird;
@@ -26,22 +24,21 @@ public class EmployeeTest {
     @Before
     public void setUp() {
 
-        engineFactory = new EngineFactory(employeeService);
+        engineFactory = new EngineFactory(employeeServiceMock);
         employeeOne = new Employee("John");
         employeeTwo = new Employee("Daniel");
         employeeThird = new Employee("Michel");
         employeeFour = new Employee("Bond");
     }
 
-    EmployeeService employeeServiceMock = niceMock(EmployeeService.class);
-    EngineFactory engineFactoryMock = niceMock(EngineFactory.class);
+
 
     @Test(expected = NullPointerException.class)
     public void testForEngineFactoryObjectShouldThrowException() {
-        expect(engineFactoryMock.manufactureEngines(3, null)).andStubThrow(new NullPointerException());
-        replay(engineFactoryMock);
-        engineFactoryMock.manufactureEngines(3, null);
-        verify(engineFactoryMock);
+        expect(engineFactory.manufactureEngines(3, null)).andStubThrow(new NullPointerException());
+        replay(engineFactory);
+        engineFactory.manufactureEngines(3, null);
+        verify(engineFactory);
 
     }
 
@@ -55,7 +52,7 @@ public class EmployeeTest {
         Engine engine = new Engine(EngineArchitecture.L4, 2.0, 210);
         verify(employeeServiceMock);
         EmployeeMatcher employeeMatcher = new EmployeeMatcher(engines);
-        employeeMatcher.matchesSafely(engines, numberOfEngines, engine);
+        employeeMatcher.matchesSafely(engine);
     }
 
     @Test(expected = UnqualifiedEmployeeException.class)

@@ -2,7 +2,7 @@ import org.junit.Before;
         import org.junit.Test;
         import w8p1.file.BinarySearch;
         import w8p1.file.Country;
-        import w8p1.file.SortByCapital;
+        import w8p1.file.ComparableCapital;
 
         import java.util.ArrayList;
         import java.util.List;
@@ -42,7 +42,7 @@ public class ContryTest {
 
     @Test
     public void testCapitalCountry() {
-        SortByCapital sortByCapital = new SortByCapital();
+        ComparableCapital sortByCapital = new ComparableCapital();
         List<Country> countrySorted = new ArrayList<>(countryArrayList);
         countrySorted.sort(sortByCapital);
         assertThat(countrySorted, containsInAnyOrder(contryOne,contryTwo,contryThree,contryFour));
@@ -50,9 +50,10 @@ public class ContryTest {
 
     @Test
     public void testBinarySearch() {
+        ComparableCapital sortByCapital = new ComparableCapital();
         List<Country> countrySorted = new ArrayList<>(countryArrayList);
         BinarySearch binarySearch = new BinarySearch();
-        binarySearch.binarySearchCapital(countrySorted, "Paris");
+        countrySorted.sort(sortByCapital);
         assertThat(binarySearch.binarySearchCapital(countrySorted, "Paris"), countrySorted.contains(contryFour));
     }
 }

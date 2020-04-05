@@ -6,14 +6,15 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MyClassLoader extends ClassLoader {
-
-    public MyClassLoader(ClassLoader parent) {
+  private ObjectType objectType;
+    public MyClassLoader(ClassLoader parent, ObjectType objectType) {
         super(parent);
+        this.objectType=objectType;
     }
 
     public Class loadClassFromFile(String className) {
-        String classPath = className + ".class";
-        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(classPath);
+       className=objectType.getClassFileName();
+        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(className);
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
         byte[] buffer;
         int nextValue;
@@ -25,8 +26,7 @@ public class MyClassLoader extends ClassLoader {
             e.printStackTrace();
         }
         buffer = byteStream.toByteArray();
-        String filePath="w6p3.file.";
-        return defineClass(filePath + className, buffer, 0, buffer.length);
+        return defineClass(objectType.getClassPath() , buffer, 0, buffer.length);
     }
 
 }

@@ -36,6 +36,10 @@
         <module>w8p2</module>
         <module>w8p3</module>
         <module>w8p4</module>
+        <module>w9p1</module>
+
+        <module>w9p2</module>
+        <module>w9p3</module>
     </modules>
 
     <properties>

@@ -1,21 +1,28 @@
 import com.iquestgroup.remotelearning.domain.Engine;
+import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
-public class EmployeeMatcher  {
+public class EmployeeMatcher extends TypeSafeMatcher<Engine> {
     List<Engine> engines;
     public EmployeeMatcher( List<Engine> engines){
         this.engines=engines;
     }
 
-    protected void matchesSafely(List<Engine> engines, int numberOfEngines,Engine engine) {
-        assertEquals(engines.size(), numberOfEngines);
-        assertEquals(engines.get(0).getEngineArchitecture(), engine.getEngineArchitecture());
-        assertEquals(engines.get(0).getDisplacement(), engine.getDisplacement(),0);
-        assertEquals(engines.get(0).getHorsePower(), engine.getHorsePower());
 
+
+    @Override
+    protected boolean matchesSafely(Engine engine) {
+        int numberOfEngines=3;
+        return engines.size()==(numberOfEngines)&&
+                engines.get(0).getEngineArchitecture().equals(engine.getEngineArchitecture()) &&
+                engines.get(0).getDisplacement()==(engine.getDisplacement()) &&
+                engines.get(0).getHorsePower()==(engine.getHorsePower());
     }
 
+    @Override
+    public void describeTo(Description description) {
+
+    }
 }

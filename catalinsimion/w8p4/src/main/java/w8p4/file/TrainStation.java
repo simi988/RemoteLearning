@@ -27,7 +27,7 @@ public class TrainStation {
     }
 
     private List<Integer> getRunningDays(int numberOfDays) {
-        Random rand = new Random();
+        Random rand = new Random(1);
         List<Integer> dayList = new ArrayList<>();
         for (int i = 0; i <numberOfDays ; i++) {
             int day = rand.nextInt(365);

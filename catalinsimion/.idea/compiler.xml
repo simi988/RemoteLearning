@@ -8,35 +8,39 @@
         <outputRelativeToContentRoot value="true" />
         <module name="w7p1" />
         <module name="w8p1" />
-        <module name="w2p1" />
-        <module name="w7p2" />
+        <module name="w9p1" />
+        <module name="w9p2" />
+        <module name="w5p1" />
         <module name="w5p4" />
         <module name="w3p2" />
-        <module name="w1p1" />
-        <module name="w6p2" />
-        <module name="w6p3" />
-        <module name="w4p1" />
-        <module name="w3p1" />
-        <module name="w2p2" />
-        <module name="w3p3" />
-        <module name="w8p4" />
+        <module name="w1p2" />
+        <module name="w9p3" />
         <module name="w6p1" />
+        <module name="w6p2" />
+        <module name="w4p1" />
         <module name="w4p2" />
-        <module name="w2p3" />
+        <module name="w4p3" />
+        <module name="w3p1" />
+        <module name="w3p3" />
+        <module name="w8p3" />
+        <module name="w6p3" />
+        <module name="w4p4" />
+        <module name="w2p2" />
         <module name="w1p4" />
         <module name="w1p3" />
-        <module name="w1p2" />
-        <module name="w4p4" />
-        <module name="w4p3" />
+        <module name="w2p3" />
+        <module name="w1p1" />
+        <module name="w2p1" />
         <module name="w5p3" />
         <module name="w5p2" />
-        <module name="w5p1" />
-        <module name="w8p3" />
+        <module name="w8p4" />
+        <module name="w7p2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="afs" target="1.8" />
       <module name="catalinsimion" target="1.8" />
+      <module name="Licenta" target="1.8" />
       <module name="w1p1" target="1.8" />
       <module name="w1p2" target="1.8" />
       <module name="w1p3" target="1.8" />
@@ -64,6 +68,9 @@
       <module name="w8p2" target="1.8" />
       <module name="w8p3" target="1.8" />
       <module name="w8p4" target="1.8" />
+      <module name="w9p1" target="1.8" />
+      <module name="w9p2" target="1.8" />
+      <module name="w9p3" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

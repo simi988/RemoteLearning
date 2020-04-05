@@ -7,16 +7,18 @@ public class Factory {
             case LOADED:
                 return new MyClass();
             case RELOADED:
-                return (MyClass) createObject("MyClass");
+                return (MyClass) createObject(objectType.getClassPath(),ObjectType.RELOADED);
             case SUBCLASS:
-                return (MyClass) createObject("MySubClass");
+                return (MyClass) createObject(objectType.getClassPath(),ObjectType.SUBCLASS);
         }
         throw new IllegalArgumentException("Unknon object type");
     }
 
-    public static Object createObject(String className) {
+
+
+    public static Object createObject(String className,ObjectType objectType) {
         ClassLoader parentClassLoader = MyClassLoader.class.getClassLoader();
-        MyClassLoader myClassLoader = new MyClassLoader(parentClassLoader);
+        MyClassLoader myClassLoader = new MyClassLoader(parentClassLoader,objectType);
 
         try {
             Class objectClass = myClassLoader.loadClassFromFile(className);
@@ -31,7 +33,5 @@ public class Factory {
         return myClassLoader;
     }
 
-    public enum ObjectType {
-        LOADED, RELOADED, SUBCLASS
-    }
+
 }

@@ -4,11 +4,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class BinarySearch {
-    SortByCapital sortByCapital = new SortByCapital();
+    ComparableCapital sortByCapital = new ComparableCapital();
 
     public String binarySearchCapital(List<Country> countryArrayList, String capitalSearch) {
 
-        Collections.binarySearch(countryArrayList, new Country(null, capitalSearch), sortByCapital);
+        Collections.binarySearch(countryArrayList, new Country("", capitalSearch), sortByCapital);
 
         return capitalSearch;
     }

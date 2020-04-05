@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class EnginTeste {
+public class EngineTest {
 
     private List<Employee> employee;
     private List<Engine> engines;
@@ -76,8 +77,7 @@ public class EnginTeste {
     @Test
     public void TestManufactureEngines() {
         engines = engineFactory.manufactureEngines(1, employeeFour);
-        if (!engines.isEmpty())
-            assertTrue(true);
+            assertTrue(!engines.isEmpty());
     }
 
     @Test
@@ -87,7 +87,6 @@ public class EnginTeste {
 
     @Test
     public void testEmployee() {
-        EmployeeMatcher employeeMatcher = new EmployeeMatcher(employeeOne);
-        employeeMatcher.matchesSafely("Michael");
+      assertThat(employeeOne,new EmployeeMatcher(employeeOne));
     }
 }

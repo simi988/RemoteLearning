@@ -16,9 +16,9 @@ public class Main {
         List<Integer> dayList = Arrays.asList(1, 2, 3);
         trainStation.addTrain(train, dayList);
         System.out.println(trainStation.getHoldsTrain().size());
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         trainStation.getHoldsTrain().get(train);
-        long finish = System.currentTimeMillis();
+        long finish = System.nanoTime();
         System.out.println("time elapsed: " + (finish - start));
     }
 }
