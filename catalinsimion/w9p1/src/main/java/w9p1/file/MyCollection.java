@@ -1,10 +1,8 @@
 package w9p1.file;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface MyCollection<T> {
-    public boolean containsAll(List<T> c);
-
-    public boolean addAll(List<T> c);
-
+    boolean containsAll(Collection<T> c);
+    boolean addAll(Collection<T> c);
 }

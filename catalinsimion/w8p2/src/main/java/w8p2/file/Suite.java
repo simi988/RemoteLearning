@@ -1,5 +1,5 @@
 package w8p2.file;
 
 public  enum Suite {
-    BLACKHEART, REDHEART, CLUBS, DIAMONDS;
+    BLACK_HEART, RED_HEART, CLUBS, DIAMONDS;
 }

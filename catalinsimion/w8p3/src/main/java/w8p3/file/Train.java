@@ -25,25 +25,10 @@ public class Train {
 
     @Override
     public int hashCode() {
-       // return Objects.hash(numberTrain, type, numberOfWagons);
         int hash = 7;
         hash = 31 * hash +  numberTrain;
         hash = 31 * hash + (type == null ? 0 : type.hashCode());
         hash = 31 * hash +  numberOfWagons ;
         return hash;
     }
-
-    public int getNumberTrain() {
-        return numberTrain;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public int getNumberOfWagons() {
-        return numberOfWagons;
-    }
-
-
 }

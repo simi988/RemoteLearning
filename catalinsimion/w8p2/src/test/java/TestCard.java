@@ -10,12 +10,11 @@ import static org.junit.Assert.assertEquals;
 public class TestCard {
 
     @Test
-    public void testShuffled(){
+    public void testShuffled() {
         List<Card> deckOfCards = new ArrayList<>();
-
         DeckOfCards deck=new DeckOfCards(new ArrayList<>(deckOfCards));
         deck.initialize();
         deck.shuffleList();
-        assertEquals(0,deck.getDeckOfCards().size());
+        assertEquals(52,deck.getDeckOfCards().size());
     }
 }

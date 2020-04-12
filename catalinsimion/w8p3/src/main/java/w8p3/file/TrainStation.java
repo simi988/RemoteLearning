@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class TrainStation {
 
-
     Set<Train> trainSet;
 
     public TrainStation() {
@@ -13,9 +12,7 @@ public class TrainStation {
     }
 
     public void addTrain(Train train) {
-
         trainSet.add(train);
-
     }
 
     public Set<Train> getTrainSet() {

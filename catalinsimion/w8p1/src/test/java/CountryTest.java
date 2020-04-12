@@ -8,27 +8,27 @@ import org.junit.Before;
         import java.util.List;
 
         import static org.hamcrest.MatcherAssert.assertThat;
-        import static org.hamcrest.Matchers.containsInAnyOrder;
+        import static org.hamcrest.Matchers.contains;
 
 
-public class ContryTest {
+public class CountryTest {
     List<Country> countryArrayList;
-    Country contryOne;
-    Country contryTwo;
-    Country contryThree;
-    Country contryFour;
+    Country countryOne;
+    Country countryTwo;
+    Country countryThree;
+    Country countryFour;
 
     @Before
     public void setUp() {
         countryArrayList = new ArrayList<>();
-        contryOne=new Country("Romania", "Bucharest");
-        contryTwo=(new Country("Uk", "London"));
-        contryThree=(new Country("Italy", "Rome"));
-        contryFour=(new Country("France", "Paris"));
-        countryArrayList.add(contryOne);
-        countryArrayList.add(contryTwo);
-        countryArrayList.add(contryThree);
-        countryArrayList.add(contryFour);
+        countryOne =new Country("Romania", "Bucharest");
+        countryTwo =(new Country("Uk", "London"));
+        countryThree =(new Country("Italy", "Rome"));
+        countryFour =(new Country("France", "Paris"));
+        countryArrayList.add(countryOne);
+        countryArrayList.add(countryTwo);
+        countryArrayList.add(countryThree);
+        countryArrayList.add(countryFour);
 
     }
 
@@ -36,7 +36,8 @@ public class ContryTest {
     public void testNameCountry() {
 
         List<Country> countrySorted = new ArrayList<>(countryArrayList);
-        assertThat(countrySorted, containsInAnyOrder(contryOne,contryTwo,contryThree,contryFour));
+        countrySorted.sort(Country::compareTo);
+        assertThat(countrySorted, contains(countryFour, countryThree, countryOne, countryTwo));
 
     }
 
@@ -45,7 +46,7 @@ public class ContryTest {
         ComparableCapital sortByCapital = new ComparableCapital();
         List<Country> countrySorted = new ArrayList<>(countryArrayList);
         countrySorted.sort(sortByCapital);
-        assertThat(countrySorted, containsInAnyOrder(contryOne,contryTwo,contryThree,contryFour));
+        assertThat(countrySorted, contains(countryOne, countryTwo, countryFour, countryThree));
     }
 
     @Test
@@ -54,6 +55,6 @@ public class ContryTest {
         List<Country> countrySorted = new ArrayList<>(countryArrayList);
         BinarySearch binarySearch = new BinarySearch();
         countrySorted.sort(sortByCapital);
-        assertThat(binarySearch.binarySearchCapital(countrySorted, "Paris"), countrySorted.contains(contryFour));
+        assertThat(binarySearch.binarySearchCapital(countrySorted, "Paris"), countrySorted.contains(countryFour));
     }
 }

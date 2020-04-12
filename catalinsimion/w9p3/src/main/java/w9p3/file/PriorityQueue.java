@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class PriorityQueue<E> implements Comparable<E> {
-
+public class PriorityQueue<E extends Comparable<E>> implements Comparable<E> {
 
     private Comparator<E> comparator;
     private List<E> list = new ArrayList<>();
@@ -19,27 +18,40 @@ public class PriorityQueue<E> implements Comparable<E> {
         maxSize = 10001;
     }
 
+    public int getMaxSize() {
+        return maxSize;
+    }
     public void setComparator(Comparator<E> comparator) {
         this.comparator = comparator;
     }
 
     public void insert(E e) throws Exception {
+        if (e == null) {
+            throw new Exception("Element is null");
+        }
+        if (comparator == null) {
+            comparator = new GenericComparator<E>();
+        }
         if (size() < maxSize) {
-            list.add(e);
-            if (comparator != null && size() > 1) {
-                int position = size() - 1;
-                E penultimateObject = list.get(position - 1);
-                while (comparator.compare(e, penultimateObject) > 0 && position > 0) {
-                    list.set(position, penultimateObject);
-                    position = position - 1;
-                    list.set(position, e);
-                    if (position > 0) {
-                        penultimateObject = list.get(position - 1);
-                    }
-                }
-            }
+            addElementAndSortList(e);
         } else {
             throw new Exception("Overflow");
+        }
+    }
+
+    private void addElementAndSortList(E e) {
+        list.add(e);
+        if (size() > 1) {
+            int position = size() - 1;
+            E penultimateObject = list.get(position - 1);
+            while (comparator.compare(e, penultimateObject) > 0 && position > 0) {
+                list.set(position, penultimateObject);
+                position = position - 1;
+                list.set(position, e);
+                if (position > 0) {
+                    penultimateObject = list.get(position - 1);
+                }
+            }
         }
     }
 
@@ -50,7 +62,7 @@ public class PriorityQueue<E> implements Comparable<E> {
     }
 
     public void clear() {
-        list.removeAll(list);
+        list.clear();
     }
 
     public E head() {
@@ -77,21 +89,28 @@ public class PriorityQueue<E> implements Comparable<E> {
         while (priorityQueue.size() > 0) {
             sortedList.add(priorityQueue.remove());
         }
-
         return sortedList;
     }
 
-    public boolean compareTo(PriorityQueue<E> priorityQueue) {
+    public int compareTo(PriorityQueue<E> priorityQueue) {
         if (priorityQueue == null) {
-            return true;
-        } else if (this.size() == priorityQueue.size()) {
-            return this.head() == priorityQueue.head();
+            return -1;
+        } else if (this.size() != priorityQueue.size()) {
+            return -1;
         }
-        return false;
+        return compareTo(priorityQueue.head());
     }
 
     @Override
     public int compareTo(E o) {
-        return 0;
+        return this.head().compareTo(o);
+    }
+
+
+    private static class GenericComparator<E extends Comparable<E>> implements Comparator<E> {
+        @Override
+        public int compare(E t1, E t2) {
+            return t1.compareTo(t2);
+        }
     }
 }

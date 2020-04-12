@@ -10,7 +10,6 @@ public class SortManager<T extends Comparable<? super T>> {
                     T temp = array[currentIndex - 1];
                     array[currentIndex - 1] = array[currentIndex];
                     array[currentIndex] = temp;
-
                     lastModifiedIndex = currentIndex;
                 }
             }

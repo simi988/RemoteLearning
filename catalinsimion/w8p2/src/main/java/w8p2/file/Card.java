@@ -10,20 +10,6 @@ public class Card {
         this.suite = suite;
     }
 
-    public int getNumber() {
-        return number;
-    }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public Suite getSuite() {
-        return suite;
-    }
-
-    public void setSuite(Suite suite) {
-        this.suite = suite;
-    }
 }
 
