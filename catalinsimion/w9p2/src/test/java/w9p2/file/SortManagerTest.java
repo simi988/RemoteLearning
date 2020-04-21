@@ -1,10 +1,11 @@
+package w9p2.file;
+
 import org.junit.Test;
-import w9p2.file.SortManager;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class SortTest {
+public class SortManagerTest {
     @Test
     public void sortStringTest() {
         String[] arrayOfStrings = {"A", "C", "B", "D"};
@@ -24,11 +25,5 @@ public class SortTest {
         assertEquals(9, arrayOfIntegers.length);
         assertArrayEquals(expectedOrder, arrayOfIntegers);
     }
-//
-//    @Test
-//    public void wrongTypeTest() {
-//        String[] arrayOfStrings = {"A", "C", "B"};
-//        SortManager<Integer> integerSortManager = new SortManager<>();
-//        integerSortManager.bubbleSort(arrayOfStrings);
-//    }
+
 }

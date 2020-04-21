@@ -40,6 +40,9 @@
 
         <module>w9p2</module>
         <module>w9p3</module>
+        <module>w11p1</module>
+        <module>w11p2</module>
+        <module>w11p3</module>
     </modules>
 
     <properties>

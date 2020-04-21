@@ -8,8 +8,7 @@ public class TrainStation {
     private static final int NUMBER_MAX_OF_WAGONS = 20;
     private static final int NUMBER_MAX_OF_DAYS = 30;
     private static final int NUMBER_DAYS_OF_YEARS = 365;
-    private static final int NUMBER_OF_TRAINS_GENERATED=10000;
-
+    private static final int NUMBER_OF_TRAINS_GENERATED = 10000;
     private HashMap<Train, List<Integer>> holdsTrain;
 
     public TrainStation() {
@@ -31,7 +30,7 @@ public class TrainStation {
     private List<Integer> getRunningDays(int numberOfDays) {
         Random rand = new Random(1);
         List<Integer> dayList = new ArrayList<>();
-        for (int i = 0; i < numberOfDays; i++) {
+        while (dayList.size() < numberOfDays) {
             int day = rand.nextInt(NUMBER_DAYS_OF_YEARS);
             if (!dayList.contains(day)) {
                 dayList.add(day);

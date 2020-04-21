@@ -28,9 +28,8 @@ public class DeckOfCards {
         deckOfCards.addAll(addCards(Suite.RED_HEART));
     }
 
-    public void shuffleList() {
+    public void shuffleList(Random rand) {
         List<Card> shuffledDeck = new ArrayList<>();
-        Random rand = new Random(1);
         while (deckOfCards.size() > 0) {
             int index = rand.nextInt(deckOfCards.size());
             shuffledDeck.add(deckOfCards.remove(index));

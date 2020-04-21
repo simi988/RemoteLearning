@@ -27,7 +27,7 @@ public class PriorityQueue<E extends Comparable<E>> implements Comparable<E> {
 
     public void insert(E e) throws Exception {
         if (e == null) {
-            throw new Exception("Element is null");
+            throw new IllegalArgumentException("Element is null");
         }
         if (comparator == null) {
             comparator = new GenericComparator<E>();
@@ -56,16 +56,23 @@ public class PriorityQueue<E extends Comparable<E>> implements Comparable<E> {
     }
 
     public E remove() {
+        if(list.isEmpty()){
+            throw new IllegalStateException("Priority Queue is empty");
+        }
         E head = head();
         list.remove(head());
         return head;
     }
 
     public void clear() {
+
         list.clear();
     }
 
     public E head() {
+        if(list.isEmpty()){
+            throw new IllegalStateException("Priority Queue is empty");
+        }
         return (E) list.get(0);
     }
 

@@ -1,14 +1,13 @@
+package w8p1.file;
+
 import org.junit.Before;
-        import org.junit.Test;
-        import w8p1.file.BinarySearch;
-        import w8p1.file.Country;
-        import w8p1.file.ComparableCapital;
+import org.junit.Test;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
-        import static org.hamcrest.MatcherAssert.assertThat;
-        import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 
 
 public class CountryTest {

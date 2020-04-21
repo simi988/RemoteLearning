@@ -1,7 +1,8 @@
+package w9p3.file;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import w9p3.file.PriorityQueue;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -58,12 +59,27 @@ public class PriorityQueueTest {
         integerPriorityQueue.remove();
         assertEquals(3, integerPriorityQueue.size());
     }
+    @Test
+    public void removeEmptyTest()  {
+        expectedEx.expect(IllegalStateException.class);
+        expectedEx.expectMessage("Priority Queue is empty");
+        PriorityQueue<Integer> integerPriorityQueue = new PriorityQueue<>();
+        integerPriorityQueue.remove();
 
+    }
     @Test
     public void clearTest() throws Exception {
         PriorityQueue<Integer> integerPriorityQueue = createPriorityQueue(null);
         integerPriorityQueue.clear();
         assertEquals(0, integerPriorityQueue.size());
+    }
+
+    @Test
+    public void headEmptyTest() throws Exception {
+        expectedEx.expect(IllegalStateException.class);
+        expectedEx.expectMessage("Priority Queue is empty");
+        PriorityQueue<Integer> integerPriorityQueue = new PriorityQueue<>();
+        integerPriorityQueue.head();
     }
 
     @Test

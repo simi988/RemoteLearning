@@ -1,10 +1,10 @@
+package w8p3.file;
+
 import org.junit.Test;
-import w8p3.file.Train;
-import w8p3.file.TrainStation;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestTrain {
+public class TrainTest {
     @Test
     public void testEquals() {
         TrainStation trainStation=new TrainStation();
