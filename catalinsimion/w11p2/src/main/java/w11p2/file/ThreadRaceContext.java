@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadRaceContext {
-    List<ThreadRaceCompetitor> threadRaceCompetitors=new ArrayList<>();
-    public void keepScore(ThreadRaceCompetitor competitor){
+    List<ThreadRaceCompetitor> threadRaceCompetitors = new ArrayList<>();
+
+    public synchronized void keepScore(ThreadRaceCompetitor competitor) {
         threadRaceCompetitors.add(competitor);
     }
-    public void showScoreBord(){
-        while(threadRaceCompetitors.size()<10) {
 
+    public synchronized void showScoreBord() {
+
+        for (ThreadRaceCompetitor competitor : threadRaceCompetitors) {
+            System.out.println(competitor.getId());
         }
-            for (ThreadRaceCompetitor competitor : threadRaceCompetitors) {
-                System.out.println(competitor.getId());
-            }
 
     }
 }

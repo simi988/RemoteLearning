@@ -1,23 +1,35 @@
 package w11p1.file;
 
-import java.util.PriorityQueue;
+import java.util.List;
 
-public class Server{
+public class Server implements Runnable {
     private static final int MAX_SIZE = 10;
-    private PriorityQueue<String> queue = new PriorityQueue<>(MAX_SIZE);
-    public synchronized void add(String message) throws InterruptedException {
-        if (queue.size()==MAX_SIZE){
-            wait();
-            remove();
-        }
-       else{
-            queue.add(message);
-            System.out.println(message);
+    private List<String> messages;
+
+    public Server(List<String> messages) {
+        this.messages = messages;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            synchronized (messages) {
+                if (messages.isEmpty()) {
+                    try {
+                        messages.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                String consumedMessage = messages.remove(0);
+                System.out.println(consumedMessage + " has been consumed");
+                messages.notifyAll();
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
-public synchronized void remove(){
-        queue.remove();
-        notify();
-}
-
 }

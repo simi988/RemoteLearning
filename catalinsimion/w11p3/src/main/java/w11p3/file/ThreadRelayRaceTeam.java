@@ -1,24 +1,37 @@
 package w11p3.file;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class ThreadRelayRaceTeam extends Thread {
-    private int id;
+    private CountDownLatch latchTeam;
+    private List<ThreadRaceCompetitor> competitors;
     private ThreadRaceContext threadRaceContext;
     private String teamName;
+    private CountDownLatch latchCompetitor;
 
-    public ThreadRelayRaceTeam(int id, ThreadRaceContext threadRaceContext,String teamName) {
-        this.id=id;
-        this.threadRaceContext=threadRaceContext;
-        this.teamName=teamName;
+    public ThreadRelayRaceTeam(List<ThreadRaceCompetitor> competitors, ThreadRaceContext threadRaceContext, String teamName,
+                               CountDownLatch latchCompetitor, CountDownLatch latchTeam) {
+        this.competitors = competitors;
+        this.threadRaceContext = threadRaceContext;
+        this.teamName = teamName;
+        this.latchCompetitor = latchCompetitor;
+        this.latchTeam = latchTeam;
+
     }
-    public List<ThreadRaceCompetitor> createTeam(ThreadRaceContext threadRaceContext){
-        List<ThreadRaceCompetitor> list=new ArrayList<>();
-        for(int i=0;i<4;i++) {
-            ThreadRaceCompetitor competitor=new ThreadRaceCompetitor(i,threadRaceContext);
-            list.add(competitor);
+
+    @Override
+    public void run() {
+
+        for (ThreadRaceCompetitor competitor : competitors) {
+            competitor.start();
         }
-        return list;
+        try {
+            latchCompetitor.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        latchTeam.countDown();
+        threadRaceContext.keepScoreTeam(this);
     }
 }

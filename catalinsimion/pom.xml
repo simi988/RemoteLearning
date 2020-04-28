@@ -43,6 +43,9 @@
         <module>w11p1</module>
         <module>w11p2</module>
         <module>w11p3</module>
+        <module>w12p1</module>
+        <module>w12p2</module>
+        <module>w12p3</module>
     </modules>
 
     <properties>
