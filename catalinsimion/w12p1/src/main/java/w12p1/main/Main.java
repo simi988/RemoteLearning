@@ -11,11 +11,11 @@ public class Main {
 
         MyFile myFile = new MyFile();
 
-        myFile.writeToFile(FILEPATH, "1", 4);
-        myFile.writeToFile(FILEPATH, "2", 3);
-        myFile.writeToFile(FILEPATH, "3", 2);
-        myFile.writeToFile(FILEPATH, "4", 1);
-        myFile.readFromFile(FILEPATH, 3, 3);
-        myFile.readFromFile(FILEPATH, 4, 3);
+        myFile.writeToFile(FILEPATH, 1 ,0);
+        myFile.writeToFile(FILEPATH, 2, 4);
+        myFile.writeToFile(FILEPATH, 3, 8);
+        myFile.writeToFile(FILEPATH, 4, 12);
+        myFile.readFromFile(FILEPATH, 8);
+        myFile.readFromFile(FILEPATH, 12);
     }
 }

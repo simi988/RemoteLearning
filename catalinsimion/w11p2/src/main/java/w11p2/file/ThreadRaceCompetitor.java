@@ -20,7 +20,8 @@ public class ThreadRaceCompetitor extends Thread {
 
     @Override
     public void run() {
-        latch.countDown();
+
         threadRaceContext.keepScore(this);
+        latch.countDown();
     }
 }
