@@ -6,14 +6,16 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Main {
     public static void main(String[] args) {
         ReentrantLock myLock = new ReentrantLock();
-        withLock(myLock, () -> { System.out.println("My first lock"); });
+        withLock(myLock, () -> {
+            System.out.println("My first lock");
+        });
     }
-    public static void withLock(Lock myLock,Runnable action){
+
+    public static void withLock(Lock myLock, Runnable action) {
         myLock.lock();
         try {
-           action.run();
-        }
-        finally {
+            action.run();
+        } finally {
             myLock.unlock();
         }
     }
