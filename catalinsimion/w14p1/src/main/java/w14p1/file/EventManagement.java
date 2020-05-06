@@ -9,6 +9,8 @@ public class EventManagement {
 
     String summary;
     LocalDateTime startDate;
+
+
     LocalDateTime endDate;
     String location;
     List<EventManagement> eventManagementList = new ArrayList<>();
@@ -39,10 +41,10 @@ public class EventManagement {
         LocalDate nextSUNDAY = today.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
         for (EventManagement event : eventManagementList) {
             if (nextSATURDAY.equals(event.startDate)) {
-                System.out.println(event);
+                System.out.println(event.toString());
             }
             if (nextSUNDAY.equals(event.startDate)) {
-                System.out.println(event);
+                System.out.println(event.toString());
             }
         }
 
@@ -52,7 +54,7 @@ public class EventManagement {
         ZonedDateTime zonedDateTime = localDate.atStartOfDay(zonedDate);
         for (EventManagement event : eventManagementList) {
             if (zonedDateTime.equals(event.startDate)) {
-                System.out.println(event);
+                System.out.println(event.toString());
             }
 
         }
@@ -63,9 +65,19 @@ public class EventManagement {
 
         for (EventManagement event : eventManagementList) {
             if (startDate.equals(event.startDate) && endDate.equals(event.endDate)) {
-                System.out.println(event);
+                System.out.println(event.toString());
             }
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "EventManagement{" +
+                "summary='" + summary + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", location='" + location + '\'' +
+                '}';
     }
 }

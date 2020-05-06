@@ -32,7 +32,8 @@ public class EventManagementTest {
         LocalDateTime sundayEnd = LocalDateTime.of(2020, Month.MAY, 10, 06, 30);
         EventManagement eventManagementLocation = new EventManagement(saturdayStart, sundayEnd, "Muma lui de examen", "Somesului nr 14 ");
         eventManagementLocation.nextWeekEvents();
-        assertEquals("w14p1.file.EventManagement@1b0375b3", eventManagementLocation.toString());
+        assertEquals("EventManagement{summary='Muma lui de examen', startDate=2020-05-09T06:30, endDate=2020-05-10T06:30," +
+                " location='Somesului nr 14 '}", eventManagementLocation.toString());
 
     }
 
@@ -44,7 +45,8 @@ public class EventManagementTest {
         ZoneId currentZone = ZoneId.systemDefault();
         EventManagement eventManagement = new EventManagement(dateStart, dateEnd, "Muma lui de examen");
         eventManagement.searchEvent(searchDate, currentZone);
-        assertEquals("w14p1.file.EventManagement@2c8d66b2", eventManagement.toString());
+        assertEquals("EventManagement{summary='Muma lui de examen', startDate=2020-05-07T06:30, endDate=2020-05-08T06:30," +
+                " location='null'}", eventManagement.toString());
     }
 
     @Test
@@ -53,7 +55,8 @@ public class EventManagementTest {
         LocalDateTime dateEnd = LocalDateTime.of(2020, Month.MAY, 8, 06, 30);
         EventManagement eventManagement = new EventManagement(dateStart, dateEnd, "Muma lui de examen");
         eventManagement.searchEventInterval(dateStart, dateEnd);
-        assertEquals("w14p1.file.EventManagement@2d209079", eventManagement.toString());
+        assertEquals("EventManagement{summary='Muma lui de examen', startDate=2020-05-07T06:30, endDate=2020-05-08T06:30," +
+                " location='null'}", eventManagement.toString());
     }
 
 }
