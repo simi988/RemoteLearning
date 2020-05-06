@@ -11,7 +11,7 @@ public class Main {
 
         MyFile myFile = new MyFile();
 
-        myFile.writeToFile(FILEPATH, 1 ,0);
+        myFile.writeToFile(FILEPATH, 1, 0);
         myFile.writeToFile(FILEPATH, 2, 4);
         myFile.writeToFile(FILEPATH, 3, 8);
         myFile.writeToFile(FILEPATH, 4, 12);

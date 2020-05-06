@@ -7,8 +7,8 @@ public class MyStreams {
     public static <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
         Iterator<T> secondIterator = second.iterator();
         Stream.Builder<T> streamBuilder = Stream.builder();
-        first.forEach((element) ->{
-            if(secondIterator.hasNext()){
+        first.forEach((element) -> {
+            if (secondIterator.hasNext()) {
                 streamBuilder.accept(element);
                 streamBuilder.accept(secondIterator.next());
             } else {

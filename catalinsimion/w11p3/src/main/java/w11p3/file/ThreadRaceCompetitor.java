@@ -5,14 +5,14 @@ import java.util.concurrent.CountDownLatch;
 public class ThreadRaceCompetitor extends Thread {
     private ThreadRaceContext threadRaceContext;
     private CountDownLatch latch;
-private Relay relay;
+    private Relay relay;
     private final int id;
 
-    public ThreadRaceCompetitor(int id, ThreadRaceContext threadRaceContext, CountDownLatch latch,Relay relay) {
+    public ThreadRaceCompetitor(int id, ThreadRaceContext threadRaceContext, CountDownLatch latch, Relay relay) {
         this.id = id;
         this.threadRaceContext = threadRaceContext;
         this.latch = latch;
-        this.relay=relay;
+        this.relay = relay;
     }
 
     @Override
@@ -33,7 +33,7 @@ private Relay relay;
             } else {
 
                 relay.grabStick();
-                System.out.println("The competitor " +id+ " got the stick!");
+                System.out.println("The competitor " + id + " got the stick!");
                 relay.giveStick();
 
                 System.out.println("The competitor " + id + " has passed the stick!");

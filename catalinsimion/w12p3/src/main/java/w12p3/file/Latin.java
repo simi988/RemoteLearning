@@ -7,10 +7,7 @@ import java.nio.charset.Charset;
 import java.util.Scanner;
 
 public class Latin {
-
-
-
-    public void write(File file,Charset input,Charset output) throws IOException {
+    public void write(File file, Charset input, Charset output) throws IOException {
         byte[] outputData;
         if (!file.exists()) {
             System.out.println("File does not exist");

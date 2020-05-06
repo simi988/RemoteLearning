@@ -44,9 +44,9 @@ public class ThreadRelayRace {
 
     private List<ThreadRaceCompetitor> createCompetitors(ThreadRaceContext threadRaceContext, CountDownLatch latch) {
         List<ThreadRaceCompetitor> list = new ArrayList<>();
-        Relay relay=new Relay();
+        Relay relay = new Relay();
         for (int i = 0; i < NUMBER_OF_COMPETITORS; i++) {
-            ThreadRaceCompetitor competitor = new ThreadRaceCompetitor(i, threadRaceContext, latch,relay);
+            ThreadRaceCompetitor competitor = new ThreadRaceCompetitor(i, threadRaceContext, latch, relay);
             list.add(competitor);
         }
         return list;
