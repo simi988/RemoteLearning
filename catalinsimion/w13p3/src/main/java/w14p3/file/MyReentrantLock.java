@@ -1,9 +1,9 @@
-package w14p3.main;
+package w14p3.file;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Main {
+public class MyReentrantLock {
     public static void main(String[] args) {
         ReentrantLock myLock = new ReentrantLock();
         withLock(myLock, () -> {

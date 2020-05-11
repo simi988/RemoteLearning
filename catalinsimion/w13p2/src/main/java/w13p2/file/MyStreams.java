@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.stream.Stream;
 
 public class MyStreams {
-    public static <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
+    public  <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
         Iterator<T> secondIterator = second.iterator();
         Stream.Builder<T> streamBuilder = Stream.builder();
         first.forEach((element) -> {

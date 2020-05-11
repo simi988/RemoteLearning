@@ -4,29 +4,35 @@ import java.time.*;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.ZonedDateTime;
 
 public class EventManagement {
 
-    String summary;
-    LocalDateTime startDate;
+    private String summary;
+    private ZonedDateTime startDate;
+    private ZonedDateTime endDate;
+    private String location;
 
+    public EventManagement(ZonedDateTime startDate, ZonedDateTime endDate, String summary) {
 
-    LocalDateTime endDate;
-    String location;
-    List<EventManagement> eventManagementList = new ArrayList<>();
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.summary = summary;
 
-    public EventManagement(LocalDateTime startDate, LocalDateTime endDate, String summary, String location) {
+    }
+
+    public EventManagement(ZonedDateTime startDate, ZonedDateTime endDate, String summary, String location) {
+
         this.startDate = startDate;
         this.endDate = endDate;
         this.summary = summary;
         this.location = location;
+
+
     }
 
-    public EventManagement(LocalDateTime startDate, LocalDateTime endDate, String summary) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.summary = summary;
-    }
+    private List<EventManagement> eventManagementList = new ArrayList<>();
+
 
     public void addEvent(EventManagement eventManagement) {
 
@@ -35,49 +41,50 @@ public class EventManagement {
 
     }
 
-    public void nextWeekEvents() {
+    public List<EventManagement> nextWeekEvents() {
         LocalDate today = LocalDate.now();
         LocalDate nextSATURDAY = today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
         LocalDate nextSUNDAY = today.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+        LocalDateTime localDateTime = nextSATURDAY.atTime(06, 30);
+        LocalDateTime localDateTime2 = nextSUNDAY.atTime(06, 30);
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Europe/Bucharest"));
+        ZonedDateTime zonedDateTime2 = localDateTime2.atZone(ZoneId.of("Europe/Bucharest"));
+        List<EventManagement> myEvent = new ArrayList<>();
         for (EventManagement event : eventManagementList) {
-            if (nextSATURDAY.equals(event.startDate)) {
+            if (zonedDateTime.equals(event.startDate.toLocalDate())) {
                 System.out.println(event.toString());
+                myEvent.add(event);
             }
-            if (nextSUNDAY.equals(event.startDate)) {
+            if (zonedDateTime2.equals(event.startDate)) {
                 System.out.println(event.toString());
+                myEvent.add(event);
             }
         }
-
+        return myEvent;
     }
 
-    public void searchEvent(LocalDate localDate, ZoneId zonedDate) {
-        ZonedDateTime zonedDateTime = localDate.atStartOfDay(zonedDate);
+    public List<EventManagement> searchEvent(LocalDateTime localDateTime, String zoneTime) {
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of(zoneTime));
+        List<EventManagement> myEvent = new ArrayList<>();
         for (EventManagement event : eventManagementList) {
             if (zonedDateTime.equals(event.startDate)) {
                 System.out.println(event.toString());
+                myEvent.add(event);
             }
-
         }
-
+        return myEvent;
     }
 
-    public void searchEventInterval(LocalDateTime startDate, LocalDateTime endDate) {
-
+    public List<EventManagement> searchEventInterval(ZonedDateTime startDate, ZonedDateTime endDate) {
+        List<EventManagement> myEvent = new ArrayList<>();
         for (EventManagement event : eventManagementList) {
             if (startDate.equals(event.startDate) && endDate.equals(event.endDate)) {
                 System.out.println(event.toString());
+                myEvent.add(event);
             }
         }
-
+        return myEvent;
     }
 
-    @Override
-    public String toString() {
-        return "EventManagement{" +
-                "summary='" + summary + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", location='" + location + '\'' +
-                '}';
-    }
+
 }
