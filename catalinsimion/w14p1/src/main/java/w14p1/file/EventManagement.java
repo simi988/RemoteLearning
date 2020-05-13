@@ -12,6 +12,7 @@ public class EventManagement {
     private ZonedDateTime startDate;
     private ZonedDateTime endDate;
     private String location;
+    private List<EventManagement> eventManagementList = new ArrayList<>();
 
     public EventManagement(ZonedDateTime startDate, ZonedDateTime endDate, String summary) {
 
@@ -28,14 +29,9 @@ public class EventManagement {
         this.summary = summary;
         this.location = location;
 
-
     }
 
-    private List<EventManagement> eventManagementList = new ArrayList<>();
-
-
     public void addEvent(EventManagement eventManagement) {
-
         eventManagementList.add(eventManagement);
         System.out.println(eventManagementList);
 
