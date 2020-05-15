@@ -8,7 +8,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,59 +17,66 @@ public class UserConsole {
     public void myConsole() {
 
         Scanner in = new Scanner(System.in);
-
         boolean isValid = true;
-        boolean isValid1 = true;
-        int option = 0;
 
         while (isValid) {
-            System.out.println("Enter 1 for add event: ");
-            System.out.println("Enter 2 for see events taking place next weekend: ");
-            System.out.println("Enter 3 for search an event: ");
-            System.out.println("Enter 4 for search an event in the interval: ");
-            System.out.println("Enter 5 for exit: ");
-            System.out.println();
-            System.out.println("Enter your option is: ");
-            while (isValid1) {
-                try {
-
-                    option = in.nextInt();
-                    isValid1 = false;
-                } catch (InputMismatchException e) {
-                    System.err.println("Insert just numbers!");
-                    isValid1 = true;
-                }
-            }
-            System.out.println("Your option is " + option);
-
-            switch (option) {
-                case 1:
-                    event = createEvent(in);
-                    addEvent(in);
-                    isValid = true;
-                    break;
-                case 2:
-
-                    nextWeekend(event);
-                    isValid = true;
-                    break;
-                case 3:
-
-                    searchEvent(in, event);
-                    isValid = true;
-                    break;
-                case 4:
-
-                    searchEventInterval(in, event);
-                    isValid = true;
-                    break;
-                case 5:
-                    isValid = false;
+            getMenu();
+            int option = getOption(in);
+            if (validateOption(option)) {
+                isValid = runOption(in, option);
+            } else {
+                System.out.println("Invalid option");
             }
         }
     }
 
-    private void addEvent(Scanner in) {
+    private boolean runOption(Scanner in, int option) {
+        switch (option) {
+            case 1:
+                event = createEvent(in);
+                addEvent();
+                break;
+            case 2:
+                nextWeekend(event);
+                break;
+            case 3:
+                searchEvent(in, event);
+                break;
+            case 4:
+                searchEventInterval(in, event);
+                break;
+            case 5:
+                return false;
+        }
+        return true;
+    }
+
+    private boolean validateOption(int option) {
+        return option <= 5 && option >= 1;
+    }
+
+    private int getOption(Scanner in) {
+        int option = 0;
+        System.out.println("Enter your option is: ");
+        try {
+            option = Integer.parseInt(in.next());
+        } catch (NumberFormatException e) {
+            System.err.println("Insert just numbers!");
+        }
+        System.out.println("Your option is " + option);
+        return option;
+    }
+
+    private void getMenu() {
+        System.out.println("Enter 1 for add event: ");
+        System.out.println("Enter 2 for see events taking place next weekend: ");
+        System.out.println("Enter 3 for search an event: ");
+        System.out.println("Enter 4 for search an event in the interval: ");
+        System.out.println("Enter 5 for exit: ");
+        System.out.println();
+    }
+
+    private void addEvent() {
 
         event.addEvent(event);
     }
@@ -113,6 +119,7 @@ public class UserConsole {
                 System.out.println("enter zone time");
                 String zoneTime = in.next();
                 event.searchEvent(localDateTime, zoneTime);
+                isValid = false;
             } catch (DateTimeParseException dateTimeParseException) {
                 System.err.println("Invalid date format");
                 isValid = true;
@@ -159,7 +166,7 @@ public class UserConsole {
     }
 
     private ZonedDateTime getStartDate(Scanner in) {
-        // for cleaning up the buffer
+
         in.nextLine();
 
         ZonedDateTime zonedDateTime = null;
