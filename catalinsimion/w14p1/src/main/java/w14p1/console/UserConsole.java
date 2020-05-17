@@ -1,7 +1,6 @@
 package w14p1.console;
 
 import w14p1.file.EventManagement;
-
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -77,7 +76,6 @@ public class UserConsole {
     }
 
     private void addEvent() {
-
         event.addEvent(event);
     }
 
