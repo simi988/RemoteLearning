@@ -1,9 +1,9 @@
-package w15p4.Main;
+package w15p2.Main;
 
-import w15p4.DataObject.Client;
-import w15p4.DataObject.Transaction;
-import w15p4.Database.MyDB;
-import w15p4.Operation.OperationManager;
+import w15p2.DataObject.Client;
+import w15p2.DataObject.Transaction;
+import w15p2.Database.MyDB;
+import w15p2.Operation.OperationManager;
 
 public class Main {
     public static void main(String[] args) {

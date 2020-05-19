@@ -1,4 +1,4 @@
-package w15p4.DataObject;
+package w15p2.DataObject;
 
 public class Client {
     private String UserName;

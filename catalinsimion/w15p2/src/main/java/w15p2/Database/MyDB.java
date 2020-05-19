@@ -1,7 +1,7 @@
-package w15p4.Database;
+package w15p2.Database;
 
-import w15p4.DataObject.Client;
-import w15p4.DataObject.Transaction;
+import w15p2.DataObject.Client;
+import w15p2.DataObject.Transaction;
 
 import java.sql.*;
 

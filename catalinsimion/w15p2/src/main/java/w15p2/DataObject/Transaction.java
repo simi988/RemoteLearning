@@ -1,6 +1,4 @@
-package w15p4.DataObject;
-
-import w15p4.DataObject.Client;
+package w15p2.DataObject;
 
 public class Transaction {
   private Client client;

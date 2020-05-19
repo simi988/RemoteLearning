@@ -1,7 +1,7 @@
-package w15p4.Operation;
+package w15p2.Operation;
 
-import w15p4.DataObject.Transaction;
-import w15p4.Database.MyDB;
+import w15p2.DataObject.Transaction;
+import w15p2.Database.MyDB;
 
 public class OperationManager {
   private MyDB myDB;

@@ -98,9 +98,10 @@
     <module>w15p1</module>
             
     <module>w15p2</module>
-          
+    <module>w15p3</module>
+      <module>w15p6</module>
 
-      
+
   </modules>
       
   <properties>
