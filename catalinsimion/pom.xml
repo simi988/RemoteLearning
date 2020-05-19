@@ -1,64 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      
+  <modelVersion>4.0.0</modelVersion>
+      
+  <groupId>org.example</groupId>
+      
+  <artifactId>catalinsimion</artifactId>
+      
+  <packaging>pom</packaging>
+      
+  <version>1.0-SNAPSHOT</version>
+      
+  <modules>
+            
+    <module>w1p1</module>
+            
+    <module>w1p2</module>
+            
+    <module>w1p3</module>
+            
+    <module>w1p4</module>
+            
+    <module>w2p1</module>
+            
+    <module>w2p2</module>
+            
+    <module>w2p3</module>
+            
+    <module>w3p2</module>
+            
+    <module>w3p1</module>
+            
+    <module>w3p3</module>
+            
+    <module>w4p1</module>
+            
+    <module>w4p3</module>
+            
+    <module>w4p2</module>
+            
+    <module>w4p4</module>
+            
+    <module>w5p1</module>
+            
+    <module>w5p3</module>
+            
+    <module>w5p4</module>
+            
+    <module>w5p2</module>
+            
+    <module>w6p1</module>
+            
+    <module>w6p2</module>
+            
+    <module>w6p3</module>
+            
+    <module>w7p1</module>
+            
+    <module>w7p2</module>
+            
+    <module>w8p1</module>
+            
+    <module>w8p2</module>
+            
+    <module>w8p3</module>
+            
+    <module>w8p4</module>
+            
+    <module>w9p1</module>
+            
+    <module>w9p2</module>
+            
+    <module>w9p3</module>
+            
+    <module>w11p1</module>
+            
+    <module>w11p2</module>
+            
+    <module>w11p3</module>
+            
+    <module>w12p1</module>
+            
+    <module>w12p2</module>
+            
+    <module>w12p3</module>
+            
+    <module>w13p1</module>
+            
+    <module>w13p2</module>
+            
+    <module>w13p3</module>
+            
+    <module>w13p4</module>
+            
+    <module>w14p1</module>
+            
+    <module>w15p1</module>
+            
+    <module>w15p2</module>
+          
 
-    <groupId>org.example</groupId>
-    <artifactId>catalinsimion</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>w1p1</module>
-        <module>w1p2</module>
-        <module>w1p3</module>
-        <module>w1p4</module>
-        <module>w2p1</module>
-        <module>w2p2</module>
-        <module>w2p3</module>
-        <module>w3p2</module>
-        <module>w3p1</module>
-        <module>w3p3</module>
-        <module>w4p1</module>
-        <module>w4p3</module>
-        <module>w4p2</module>
-        <module>w4p4</module>
-        <module>w5p1</module>
-        <module>w5p3</module>
-        <module>w5p4</module>
-        <module>w5p2</module>
-        <module>w6p1</module>
-        <module>w6p2</module>
-        <module>w6p3</module>
-        <module>w7p1</module>
-        <module>w7p2</module>
-        <module>w8p1</module>
-        <module>w8p2</module>
-        <module>w8p3</module>
-        <module>w8p4</module>
-        <module>w9p1</module>
-
-        <module>w9p2</module>
-        <module>w9p3</module>
-        <module>w11p1</module>
-        <module>w11p2</module>
-        <module>w11p3</module>
-        <module>w12p1</module>
-        <module>w12p2</module>
-        <module>w12p3</module>
-        <module>w13p1</module>
-        <module>w13p2</module>
-        <module>w13p3</module>
-        <module>w13p4</module>
-        <module>w14p1</module>
-        <module>w15p1</module>
-        <module>w15p4</module>
-
-    </modules>
-
-    <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-    </properties>
-
+      
+  </modules>
+      
+  <properties>
+            
+    <maven.compiler.target>1.8</maven.compiler.target>
+            
+    <maven.compiler.source>1.8</maven.compiler.source>
+        
+  </properties>
+  
 </project>

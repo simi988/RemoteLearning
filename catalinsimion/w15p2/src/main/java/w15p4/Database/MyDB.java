@@ -1,6 +1,5 @@
 package w15p4.Database;
 
-
 import w15p4.DataObject.Client;
 import w15p4.DataObject.Transaction;
 
@@ -92,8 +91,8 @@ public class MyDB {
         }
     }
 
-    public Client getClient(String name){
-        String query = "SELECT * from clients WHERE UserName= '" +name + "';";
+    public Client getClient(String name) {
+        String query = "SELECT * from clients WHERE UserName= '" + name + "';";
         startConnection();
         Client client = null;
         try {
@@ -102,10 +101,10 @@ public class MyDB {
             resultSet.next();
             String clientName = resultSet.getString(1);
             double balance = resultSet.getDouble(2);
-            client=new Client(clientName,balance);
+            client = new Client(clientName, balance);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
+        } finally {
             closeConnection();
         }
         return client;
