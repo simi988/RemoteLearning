@@ -52,6 +52,8 @@
         <module>w13p4</module>
         <module>w14p1</module>
         <module>w15p1</module>
+        <module>w15p4</module>
+
     </modules>
 
     <properties>

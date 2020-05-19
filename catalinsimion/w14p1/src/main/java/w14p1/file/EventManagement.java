@@ -41,17 +41,17 @@ public class EventManagement {
         LocalDate today = LocalDate.now();
         LocalDate nextSATURDAY = today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
         LocalDate nextSUNDAY = today.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
-        LocalDateTime localDateTime = nextSATURDAY.atTime(06, 30);
-        LocalDateTime localDateTime2 = nextSUNDAY.atTime(06, 30);
+        LocalDateTime localDateTime = nextSATURDAY.atStartOfDay();
+        LocalDateTime localDateTime2 = nextSUNDAY.atStartOfDay();
         ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Europe/Bucharest"));
         ZonedDateTime zonedDateTime2 = localDateTime2.atZone(ZoneId.of("Europe/Bucharest"));
         List<EventManagement> myEvent = new ArrayList<>();
         for (EventManagement event : eventManagementList) {
-            if (zonedDateTime.equals(event.startDate.toLocalDate())) {
+            if (zonedDateTime.toLocalDate().equals(event.startDate.toLocalDate())) {
                 System.out.println(event.toString());
                 myEvent.add(event);
             }
-            if (zonedDateTime2.equals(event.startDate)) {
+            if (zonedDateTime2.toLocalDate().equals(event.startDate.toLocalDate())) {
                 System.out.println(event.toString());
                 myEvent.add(event);
             }

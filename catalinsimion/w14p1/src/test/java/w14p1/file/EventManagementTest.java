@@ -23,8 +23,8 @@ public class EventManagementTest {
 
     @Test
     public void nextWeekTest() {
-        LocalDateTime localDateTimeStart = LocalDateTime.of(2020, Month.MAY, 10, 06, 30);
-        LocalDateTime localDateTimeEnd = LocalDateTime.of(2020, Month.MAY, 10, 07, 30);
+        LocalDateTime localDateTimeStart = LocalDateTime.of(2020, Month.MAY, 23, 06, 30);
+        LocalDateTime localDateTimeEnd = LocalDateTime.of(2020, Month.MAY, 24, 07, 30);
         ZonedDateTime saturdayStart = localDateTimeStart.atZone(ZoneId.of("Europe/Bucharest"));
         ZonedDateTime sundayEnd = localDateTimeEnd.atZone(ZoneId.of("Europe/Bucharest"));
         EventManagement eventManagementLocation = new EventManagement(saturdayStart, sundayEnd, "Muma lui de examen", "Somesului nr 14 ");

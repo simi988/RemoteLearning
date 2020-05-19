@@ -12,15 +12,15 @@ public class MyDB {
     String PASSWORD = "password";
     Connection connection = null;
 
-    private void startConnection(){
+    private void startConnection() {
         try {
-            connection = DriverManager.getConnection(DB_URL,USERNAME,PASSWORD);
+            connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    private void closeConnection(){
+    private void closeConnection() {
         try {
             connection.close();
         } catch (SQLException throwables) {
@@ -28,7 +28,7 @@ public class MyDB {
         }
     }
 
-    public void createDatabase(){
+    public void createDatabase() {
         String createDatabaseQuery = "CREATE DATABASE IF NOT EXISTS mydatabase";
         String createTableClientsQuery = "CREATE TABLE IF NOT EXISTS clients " + "(UserName VARCHAR(255), " +
                 " Balance Double,PRIMARY KEY (UserName))";
@@ -40,7 +40,7 @@ public class MyDB {
             stmt.executeUpdate(createTableClientsQuery);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally{
+        } finally {
             closeConnection();
         }
     }
@@ -59,7 +59,7 @@ public class MyDB {
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
-        } finally{
+        } finally {
             closeConnection();
         }
     }
@@ -78,7 +78,7 @@ public class MyDB {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally{
+        } finally {
             closeConnection();
         }
         return clientList;
@@ -94,7 +94,7 @@ public class MyDB {
             balance = client.getBalance();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             closeConnection();
         }
         return balance;
@@ -114,7 +114,7 @@ public class MyDB {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             closeConnection();
         }
         return clientRichList;
