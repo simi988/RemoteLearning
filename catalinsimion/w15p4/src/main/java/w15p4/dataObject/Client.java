@@ -1,4 +1,4 @@
-package w15p2.DataObject;
+package w15p4.dataObject;
 
 public class Client {
     private String UserName;
@@ -16,9 +16,11 @@ public class Client {
     public Double getBalance() {
         return balance;
     }
+
     public void setBalance(Double balance) {
         this.balance = balance;
     }
+
     @Override
     public String toString() {
         return "Client{" +

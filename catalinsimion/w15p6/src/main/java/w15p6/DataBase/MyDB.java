@@ -31,22 +31,22 @@ public class MyDB {
     public void getInformation() throws SQLException {
         startConnection();
 
-        PreparedStatement ps = connection.prepareStatement("select * from clients");
-        ResultSet rs = ps.executeQuery();
-        ResultSetMetaData rsmd = rs.getMetaData();
-        System.out.println("Table Name: " + rsmd.getTableName(1));
-        System.out.println("Total columns: " + rsmd.getColumnCount());
-        System.out.println("Column Name of 1st column: " + rsmd.getColumnName(1));
-        System.out.println("Column Name of 2st column: " + rsmd.getColumnName(2));
+        PreparedStatement prepareStatementClient = connection.prepareStatement("select * from clients");
+        ResultSet resultSetClient = prepareStatementClient.executeQuery();
+        ResultSetMetaData resultSetClientMetaData = resultSetClient.getMetaData();
+        System.out.println("Table Name: " + resultSetClientMetaData.getTableName(1));
+        System.out.println("Total columns: " + resultSetClientMetaData.getColumnCount());
+        System.out.println("Column Name of 1st column: " + resultSetClientMetaData.getColumnName(1));
+        System.out.println("Column Name of 2st column: " + resultSetClientMetaData.getColumnName(2));
         System.out.println();
-        PreparedStatement pas = connection.prepareStatement("select * from transactions");
-        ResultSet rss = pas.executeQuery();
-        ResultSetMetaData rssmd = rss.getMetaData();
-        System.out.println("Table Name: " + rssmd.getTableName(1));
-        System.out.println("Total columns: " + rssmd.getColumnCount());
-        System.out.println("Column Name of 1st column: " + rssmd.getColumnName(1));
-        System.out.println("Column Name of 2st column: " + rssmd.getColumnName(2));
-        System.out.println("Column Name of 3st column: " + rssmd.getColumnName(3));
+        PreparedStatement prepareStatementTransaction = connection.prepareStatement("select * from transactions");
+        ResultSet resultSetTransaction = prepareStatementTransaction.executeQuery();
+        ResultSetMetaData resultSetTransactionMetaData = resultSetTransaction.getMetaData();
+        System.out.println("Table Name: " + resultSetTransactionMetaData.getTableName(1));
+        System.out.println("Total columns: " + resultSetTransactionMetaData.getColumnCount());
+        System.out.println("Column Name of 1st column: " + resultSetTransactionMetaData.getColumnName(1));
+        System.out.println("Column Name of 2st column: " + resultSetTransactionMetaData.getColumnName(2));
+        System.out.println("Column Name of 3st column: " + resultSetTransactionMetaData.getColumnName(3));
         closeConnection();
     }
 

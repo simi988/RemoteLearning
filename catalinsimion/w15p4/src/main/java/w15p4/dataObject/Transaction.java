@@ -1,9 +1,9 @@
-package w15p2.DataObject;
+package w15p4.dataObject;
 
 public class Transaction {
-  private Client client;
-  private  Double amount;
-   private String description;
+    private Client client;
+    private Double amount;
+    private String description;
 
     public Transaction(Client client, Double amount) {
         this.client = client;
@@ -20,25 +20,12 @@ public class Transaction {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public Double getAmount() {
         return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
     }
 
     public String getDescription() {
         return description;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 
 }

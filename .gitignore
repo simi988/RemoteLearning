@@ -31,3 +31,4 @@ target/
 factoryConfiguration.json
 *.idea
 !resources/
+/.metadata/
