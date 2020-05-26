@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException {
         MyDB myDB = new MyDB();
+
         myDB.createDatabase();
         Client client = new Client("Andrei", 121.00);
         Client client1 = new Client("Denisa", 1211.00);
@@ -28,5 +29,6 @@ public class Main {
         System.out.println();
         myDB.getRichClients().forEach(clients -> System.out.println("UserName: " + clients.getUserName() +
                 ", Balance: " + clients.getBalance()));
+        myDB.dropTable();
     }
 }

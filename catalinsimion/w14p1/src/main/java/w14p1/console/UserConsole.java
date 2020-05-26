@@ -10,6 +10,8 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.*;
+
 public class UserConsole {
     private EventManagement event;
 
@@ -24,7 +26,7 @@ public class UserConsole {
             if (validateOption(option)) {
                 isValid = runOption(in, option);
             } else {
-                System.out.println("Invalid option");
+                out.println("Invalid option");
             }
         }
     }
@@ -36,7 +38,7 @@ public class UserConsole {
                 addEvent();
                 break;
             case 2:
-                nextWeekend(event);
+                getNextWeekendEvent(event);
                 break;
             case 3:
                 searchEvent(in, event);
@@ -56,23 +58,23 @@ public class UserConsole {
 
     private int getOption(Scanner in) {
         int option = 0;
-        System.out.println("Enter your option is: ");
+        out.println("Enter your option is: ");
         try {
             option = Integer.parseInt(in.next());
         } catch (NumberFormatException e) {
-            System.err.println("Insert just numbers!");
+            err.println("Insert just numbers!");
         }
-        System.out.println("Your option is " + option);
+        out.println("Your option is " + option);
         return option;
     }
 
     private void getMenu() {
-        System.out.println("Enter 1 for add event: ");
-        System.out.println("Enter 2 for see events taking place next weekend: ");
-        System.out.println("Enter 3 for search an event: ");
-        System.out.println("Enter 4 for search an event in the interval: ");
-        System.out.println("Enter 5 for exit: ");
-        System.out.println();
+        out.println("Enter 1 for add event: ");
+        out.println("Enter 2 for see events taking place next weekend: ");
+        out.println("Enter 3 for search an event: ");
+        out.println("Enter 4 for search an event in the interval: ");
+        out.println("Enter 5 for exit: ");
+        out.println();
     }
 
     private void addEvent() {
@@ -83,13 +85,13 @@ public class UserConsole {
         ZonedDateTime startDate = getStartDate(in);
         ZonedDateTime endDate = getEndDate(in);
 
-        System.out.println("Enter summary: ");
+        out.println("Enter summary: ");
         String summary = in.next();
 
-        System.out.println("Enter location or null: ");
+        out.println("Enter location or null: ");
         String location = in.next();
 
-        EventManagement event;
+
         if (location.equals("null")) {
             event = new EventManagement(startDate, endDate, summary);
         } else {
@@ -98,10 +100,10 @@ public class UserConsole {
         return event;
     }
 
-    private void nextWeekend(EventManagement event) {
+    private void getNextWeekendEvent(EventManagement event) {
         List<EventManagement> eventManagementList = event.nextWeekEvents();
         if (eventManagementList.isEmpty()) {
-            System.out.println("Not event in weekend");
+            out.println("Not event in weekend");
         }
     }
 
@@ -110,19 +112,19 @@ public class UserConsole {
         while (isValid) {
             try {
                 in.nextLine();
-                System.out.println("Please enter start date (format:dd-MM-yyyy HH:mm): ");
+                out.println("Please enter start date (format:dd-MM-yyyy HH:mm): ");
                 String next = in.nextLine();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
                 LocalDateTime localDateTime = LocalDateTime.parse(next, formatter);
-                System.out.println("enter zone time");
+                out.println("enter zone time");
                 String zoneTime = in.next();
                 event.searchEvent(localDateTime, zoneTime);
                 isValid = false;
             } catch (DateTimeParseException dateTimeParseException) {
-                System.err.println("Invalid date format");
+                err.println("Invalid date format");
                 isValid = true;
             } catch (NullPointerException nullPointerException) {
-                System.err.println("Invalid TimeZone format ");
+                err.println("Invalid TimeZone format ");
                 isValid = true;
             }
         }
@@ -139,24 +141,17 @@ public class UserConsole {
         boolean isValid = true;
         while (isValid) {
             try {
-                System.out.println("Please enter end date (format:dd-MM-yyyy HH:mm;Timezone): ");
-                String next = in.nextLine();
-                String[] split = next.split(";");
-                if (split.length != 2) {
-                    throw new IllegalArgumentException();
-                }
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-                LocalDateTime localDateTime = LocalDateTime.parse(split[0], formatter);
-                zonedDateTime = localDateTime.atZone(ZoneId.of(split[1]));
+                out.println("Please enter end date (format:dd-MM-yyyy HH:mm;Timezone): ");
+                zonedDateTime = getZonedDateTime(in);
                 isValid = false;
             } catch (DateTimeParseException dateTimeParseException) {
-                System.err.println("Invalid date format");
+                err.println("Invalid date format");
                 isValid = true;
             } catch (DateTimeException dateTimeException) {
-                System.err.println("Invalid TimeZone format ");
+                err.println("Invalid TimeZone format ");
                 isValid = true;
             } catch (IllegalArgumentException illegalArgumentException) {
-                System.err.println("Invalid arguments ");
+                err.println("Invalid arguments ");
                 isValid = true;
             }
         }
@@ -172,28 +167,34 @@ public class UserConsole {
 
         while (isValid) {
             try {
-                System.out.println("Please enter start date (format:dd-MM-yyyy HH:mm;TimeZone): ");
-                String next = in.nextLine();
-                String[] split = next.split(";");
-                if (split.length != 2) {
-                    throw new IllegalArgumentException();
-                }
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-                LocalDateTime localDateTime = LocalDateTime.parse(split[0], formatter);
-                zonedDateTime = localDateTime.atZone(ZoneId.of(split[1]));
+                out.println("Please enter start date (format:dd-MM-yyyy HH:mm;TimeZone): ");
+                zonedDateTime = getZonedDateTime(in);
                 isValid = false;
 
             } catch (DateTimeParseException dateTimeParseException) {
-                System.err.println("Invalid date format");
+                err.println("Invalid date format");
                 isValid = true;
             } catch (DateTimeException dateTimeException) {
-                System.err.println("Invalid TimeZone format ");
+                err.println("Invalid TimeZone format ");
                 isValid = true;
             } catch (IllegalArgumentException illegalArgumentException) {
-                System.err.println("Invalid arguments ");
+                err.println("Invalid arguments ");
                 isValid = true;
             }
         }
+        return zonedDateTime;
+    }
+
+    private ZonedDateTime getZonedDateTime(Scanner in) {
+        ZonedDateTime zonedDateTime;
+        String next = in.nextLine();
+        String[] split = next.split(";");
+        if (split.length != 2) {
+            throw new IllegalArgumentException();
+        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDateTime localDateTime = LocalDateTime.parse(split[0], formatter);
+        zonedDateTime = localDateTime.atZone(ZoneId.of(split[1]));
         return zonedDateTime;
     }
 }

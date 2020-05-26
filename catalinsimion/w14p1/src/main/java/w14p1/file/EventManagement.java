@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.ZonedDateTime;
 
+import static java.lang.System.*;
+
 public class EventManagement {
 
     private String summary;
@@ -33,7 +35,7 @@ public class EventManagement {
 
     public void addEvent(EventManagement eventManagement) {
         eventManagementList.add(eventManagement);
-        System.out.println(eventManagementList);
+        out.println(eventManagementList);
 
     }
 
@@ -48,11 +50,11 @@ public class EventManagement {
         List<EventManagement> myEvent = new ArrayList<>();
         for (EventManagement event : eventManagementList) {
             if (zonedDateTime.toLocalDate().equals(event.startDate.toLocalDate())) {
-                System.out.println(event.toString());
+                out.println(event.toString());
                 myEvent.add(event);
             }
             if (zonedDateTime2.toLocalDate().equals(event.startDate.toLocalDate())) {
-                System.out.println(event.toString());
+                out.println(event.toString());
                 myEvent.add(event);
             }
         }
@@ -64,7 +66,7 @@ public class EventManagement {
         List<EventManagement> myEvent = new ArrayList<>();
         for (EventManagement event : eventManagementList) {
             if (zonedDateTime.equals(event.startDate)) {
-                System.out.println(event.toString());
+                out.println(event.toString());
                 myEvent.add(event);
             }
         }
@@ -75,7 +77,7 @@ public class EventManagement {
         List<EventManagement> myEvent = new ArrayList<>();
         for (EventManagement event : eventManagementList) {
             if (startDate.equals(event.startDate) && endDate.equals(event.endDate)) {
-                System.out.println(event.toString());
+                out.println(event.toString());
                 myEvent.add(event);
             }
         }

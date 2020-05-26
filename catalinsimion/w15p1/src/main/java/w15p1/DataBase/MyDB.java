@@ -29,8 +29,8 @@ public class MyDB {
     }
 
     public void createDatabase() {
-        String createDatabaseQuery = "CREATE DATABASE IF NOT EXISTS mydatabase";
-        String createTableClientsQuery = "CREATE TABLE IF NOT EXISTS clients " + "(UserName VARCHAR(255), " +
+        String createDatabaseQuery = "CREATE DATABASE IF NOT EXISTS MYDATABASE";
+        String createTableClientsQuery = "CREATE TABLE IF NOT EXISTS CLIENTS " + "(UserName VARCHAR(255), " +
                 " Balance Double,PRIMARY KEY (UserName))";
         Statement stmt = null;
         startConnection();
@@ -45,8 +45,9 @@ public class MyDB {
         }
     }
 
-    public void addClients(Client client) {
-        String add = "INSERT INTO clients(username,balance) VALUES(?,?)";
+    public void addClients(Client client) throws SQLException {
+        connection.setAutoCommit(false);
+        String add = "INSERT INTO CLIENTS(username,balance) VALUES(?,?)";
         startConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(add);
@@ -64,9 +65,10 @@ public class MyDB {
         }
     }
 
-    public List<Client> getAllClients() {
+    public List<Client> getAllClients() throws SQLException {
+        connection.setAutoCommit(false);
         List<Client> clientList = new ArrayList<>();
-        String queryOne = "SELECT * from clients ";
+        String queryOne = "SELECT * from CLIENTS ";
         startConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(queryOne);
@@ -84,7 +86,8 @@ public class MyDB {
         return clientList;
     }
 
-    public double getBalance(Client client) {
+    public double getBalance(Client client) throws SQLException {
+        connection.setAutoCommit(false);
         String queryTwo = "SELECT UserName from clients where UserName='client.getUserName()' ";
         double balance = 0;
         startConnection();
@@ -100,9 +103,10 @@ public class MyDB {
         return balance;
     }
 
-    public List<Client> getRichClients() {
+    public List<Client> getRichClients() throws SQLException {
+        connection.setAutoCommit(false);
         List<Client> clientRichList = new ArrayList<>();
-        String queryThree = "SELECT * from Clients where Balance> 100000;";
+        String queryThree = "SELECT * from CLIENTS where Balance> 100000;";
         startConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(queryThree);
@@ -118,5 +122,18 @@ public class MyDB {
             closeConnection();
         }
         return clientRichList;
+    }
+
+    public void dropTable() throws SQLException {
+        String drop = "DROP TABLE CLIENTS";
+        startConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(drop);
+            preparedStatement.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            closeConnection();
+        }
     }
 }
