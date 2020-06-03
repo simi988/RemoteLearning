@@ -13,6 +13,8 @@ import java.util.Scanner;
 import static java.lang.System.*;
 
 public class UserConsole {
+    public static final String INVALID_DATE_FORMAT = "Invalid date format";
+    public static final String INVALID_TIME_ZONE_FORMAT = "Invalid TimeZone format ";
     private EventManagement event;
 
     public void myConsole() {
@@ -48,6 +50,8 @@ public class UserConsole {
                 break;
             case 5:
                 return false;
+            default:
+                throw new IllegalStateException("Unexpected value: " + option);
         }
         return true;
     }
@@ -121,10 +125,10 @@ public class UserConsole {
                 event.searchEvent(localDateTime, zoneTime);
                 isValid = false;
             } catch (DateTimeParseException dateTimeParseException) {
-                err.println("Invalid date format");
+                err.println(INVALID_DATE_FORMAT);
                 isValid = true;
             } catch (NullPointerException nullPointerException) {
-                err.println("Invalid TimeZone format ");
+                err.println(INVALID_TIME_ZONE_FORMAT);
                 isValid = true;
             }
         }
@@ -145,10 +149,10 @@ public class UserConsole {
                 zonedDateTime = getZonedDateTime(in);
                 isValid = false;
             } catch (DateTimeParseException dateTimeParseException) {
-                err.println("Invalid date format");
+                err.println(INVALID_DATE_FORMAT);
                 isValid = true;
             } catch (DateTimeException dateTimeException) {
-                err.println("Invalid TimeZone format ");
+                err.println(INVALID_TIME_ZONE_FORMAT);
                 isValid = true;
             } catch (IllegalArgumentException illegalArgumentException) {
                 err.println("Invalid arguments ");
@@ -172,10 +176,10 @@ public class UserConsole {
                 isValid = false;
 
             } catch (DateTimeParseException dateTimeParseException) {
-                err.println("Invalid date format");
+                err.println(INVALID_DATE_FORMAT);
                 isValid = true;
             } catch (DateTimeException dateTimeException) {
-                err.println("Invalid TimeZone format ");
+                err.println(INVALID_TIME_ZONE_FORMAT);
                 isValid = true;
             } catch (IllegalArgumentException illegalArgumentException) {
                 err.println("Invalid arguments ");

@@ -10,9 +10,9 @@ import static java.lang.System.*;
 
 public class EventManagement {
 
-    private String summary;
-    private ZonedDateTime startDate;
-    private ZonedDateTime endDate;
+    private final String summary;
+    private final ZonedDateTime startDate;
+    private final ZonedDateTime endDate;
     private String location;
     private List<EventManagement> eventManagementList = new ArrayList<>();
 

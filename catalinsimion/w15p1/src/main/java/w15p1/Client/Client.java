@@ -2,9 +2,9 @@ package w15p1.Client;
 
 public class Client {
     private String UserName;
-    private Double balance;
+    private double balance;
 
-    public Client(String UserName, Double balance) {
+    public Client(String UserName, double balance) {
         this.UserName = UserName;
         this.balance = balance;
     }
