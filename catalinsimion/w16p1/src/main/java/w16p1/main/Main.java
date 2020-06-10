@@ -1,29 +1,35 @@
 package w16p1.main;
 
-import w16p1.dataBase.MyDB;
+import w16p1.dataBase.DAO;
 import w16p1.dataObjects.*;
-import w16p1.operation.RestaurantOperation;
-import w16p1.operation.WaiterOperation;
+import w16p1.service.RestaurantService;
+import w16p1.service.WaiterService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws NoSuchFieldException {
-        MyDB myDB = new MyDB();
-        myDB.createDatabase();
+    public static void main(String[] args) throws IllegalAccessException, SQLException {
+        DAO dao = new DAO();
+        dao.createDatabase();
 
-        List<Order> orderList = new ArrayList<>();
-        List<Waiter> waiterList = new ArrayList<>();
-        Waiter waiter = new Waiter("Alex", 1200, orderList, 1);
+        Restaurant restaurant = new Restaurant(10, 1);
+        RestaurantService restaurantService = new RestaurantService(restaurant, dao);
+        WaiterService waiterService = new WaiterService(dao);
+        Client client = restaurantService.newClient(120, 1);
+        Item item = new Item("Cola", 5, 1);
+        Order order = waiterService.createOrder(client, item, 1);
 
-        Restaurant restaurant = new Restaurant(waiterList, 10, 1);
-        RestaurantOperation restaurantOperation = new RestaurantOperation(restaurant);
-        Client client = restaurantOperation.newClient(120, 1);
-        WaiterOperation waiterOperation = new WaiterOperation();
-        Order order = waiterOperation.createOrder(client, waiter, 1);
-      //  myDB.insert();
+        Waiter waiterOne = restaurantService.engageWaiter("Mihai", 1200, order, 1);
+        Waiter waiterTwo = restaurantService.engageWaiter("Catalin", 1200, order, 2);
+        restaurantService.dismissWaiter(waiterTwo);
+        restaurantService.putMoreTables(12);
+        restaurantService.removeTables(10);
+        waiterService.takeCommand(item, waiterOne, client);
+        waiterService.removeItem(item);
+        waiterService.getBill(item);
+        restaurantService.changeItemPrice(item, 6);
 
-
+        dao.dropTable();
+        dao.closeConnection();
     }
 }

@@ -3,24 +3,24 @@ package w16p1.dataObjects;
 import w16p1.Anotations.Column;
 import w16p1.Anotations.Table;
 
-import java.util.List;
 @Table(name = "TBL_RESTAURANT")
 public class Restaurant {
     @Column(name = "Waiter")
-    List<Waiter> waiterList;
+    Waiter waiter;
     @Column(name = "NUMBER_OF_TABLES")
     int numberOfTables;
-    @Column(name = "ID",isPrimaryKey = true)
+    @Column(name = "ID", isPrimaryKey = true)
     int id;
 
-    public Restaurant(List<Waiter> waiterList, int numberOfTables, int id) {
-        this.waiterList = waiterList;
+    public Restaurant(int numberOfTables, int id) {
         this.numberOfTables = numberOfTables;
         this.id = id;
     }
 
-    public List<Waiter> getWaiterList() {
-        return waiterList;
+    public Restaurant(Waiter waiter, int numberOfTables, int id) {
+        this.waiter = waiter;
+        this.numberOfTables = numberOfTables;
+        this.id = id;
     }
 
     public void setNumberOfTables(int numberOfTables) {

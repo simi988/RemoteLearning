@@ -63,7 +63,6 @@ public class MyDB {
         executeUpdate(preparedStatement);
     }
 
-
     public void dropTable() {
         try {
             PreparedStatement preparedStatementClient = connection.prepareStatement(DROP_TABLE_CLIENTS);

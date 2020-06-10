@@ -7,24 +7,27 @@ import w16p1.Anotations.Table;
 public class Client {
     @Column(name = "TABLE_NUMBER")
     int tableNumber;
-
     @Column(name = "MONEY")
     double budget;
-
-    @Column(name = "ID",isPrimaryKey = true,autoIncrement = true)
+    @Column(name = "ID", isPrimaryKey = true)
     int id;
 
-    public Client(int tableNumber, double budget,  int id) {
+    public Client(int tableNumber, double budget, int id) {
         this.tableNumber = tableNumber;
         this.budget = budget;
         this.id = id;
     }
 
-
-    public void setTableNumber(int tableNumber) {
-        this.tableNumber = tableNumber;
-    }
     public int getTableNumber() {
         return tableNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "tableNumber=" + tableNumber +
+                ", budget=" + budget +
+                ", id=" + id +
+                '}';
     }
 }
